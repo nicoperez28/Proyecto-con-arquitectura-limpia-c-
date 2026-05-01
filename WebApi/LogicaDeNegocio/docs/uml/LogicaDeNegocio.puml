@@ -1,0 +1,128 @@
+@startuml
+' LogicaDeNegocio - Diagrama de clases generado automáticamente
+' Paquete de entidades
+package "EntidadesDeNegocio" {
+
+class Auditoria {
+  +int Id
+  +int IdAuditado
+  +string Mail
+  +string Accion
+  +DateTime Fecha
+}
+
+class Equipo {
+  +int Id
+  +string Nombre
+  +List<Usuario> usuarios
+}
+
+enum MetodoDePago {
+  Credito
+  Efectivo
+}
+
+class Usuario {
+  +int Id
+  +string Nombre
+  +string Apellido
+  +string Mail
+  +Contrasenia Contrasenia
+}
+
+class Rol {
+  +int Id
+  +string Tipo
+}
+
+class TipoDeGasto {
+  +int Id
+  +string Nombre
+  +string Descripcion
+}
+
+abstract class Pago {
+  +int Id
+  +MetodoDePago MetodoDePago
+  +string Descripcion
+  +double Monto
+  +Usuario Usuario
+  +int UsuarioId
+  +TipoDeGasto TipoDeGasto
+  +int TipoDeGastoId
+  +double CalcularMontoTotal()
+}
+
+class PagoUnico {
+  +DateTime FechaDePago
+  +string NumeroDeRecibo
+  +static string GenerarNumeroRecibo()
+}
+
+class Recurrente {
+  +DateTime FechaDesde
+  +DateTime FechaHasta
+  +double CalcularMontoTotal()
+}
+
+}
+
+' Value objects e interfaces
+package "ValueObject" {
+class Contrasenia {
+  +string Value
+}
+}
+
+package "InterfacesEntidades" {
+interface IValidable {
+  +void Validar()
+}
+}
+
+package "InterfacesDeRepositorio" {
+interface IRepositorio<T> {
+  +void Add(T item)
+  +T GetById(int id)
+  +IEnumerable<T> GetAll()
+}
+
+interface IRepositorioUsuario {
+  +Usuario GetByEmail(string email, string contrasenia)
+  +Usuario BuscarUsuarioByMail(string mail)
+  +string GenerarEmail(string nombre, string apellido)
+}
+
+interface IRepositorioPago {
+  +void Add(Pago item)
+  +IEnumerable<Pago> GetAll()
+  +Pago GetById(int id)
+}
+
+interface IRepositorioAuditoria {
+  +void Add(Auditoria item)
+}
+
+interface IRepositorioEquipo
+interface IRepositorioRol
+interface IRepositorioTipoDeGasto
+}
+
+' Relaciones (asociaciones, herencia, implementaciones)
+Usuario "1" --> "0..*" Equipo : pertenece_a
+Usuario "1" --> "1" Rol : tiene
+Usuario "1" o-- Contrasenia : usa
+Equipo "1" o-- "0..*" Usuario : contiene
+Pago <|-- PagoUnico
+Pago <|-- Recurrente
+Pago "*" --> "1" Usuario : creado_por
+Pago "*" --> "1" TipoDeGasto : categoria
+Auditoria "*" --> "1" Usuario : auditado (IdAuditado)
+
+' Implementaciones de interfaces
+Usuario ..|> IValidable
+TipoDeGasto ..|> IValidable
+Pago ..|> IValidable
+Contrasenia ..|> IValidable
+
+@enduml

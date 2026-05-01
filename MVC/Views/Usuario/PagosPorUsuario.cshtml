@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MVC.Models.DTOs.PagoDTO.PagoListadoDto>
+
+@{
+    ViewData["Title"] = "PagosPorUsuario";
+}
+
+
+<h1>Pagos Por Usuario</h1>
+@if (TempData["MensajeExito"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["MensajeExito"]
+    </div>
+}
+@{
+    var rol = Context.Session.GetString("Rol");
+}
+<div>
+    @if (rol == "Gerente")
+
+    {
+        <br />
+        <div class="form-group">
+            <a asp-controller="Gerente" asp-action="ListadoDeEquipos" class="btn btn-primary">Mostrar Equipos</a>
+        </div>
+    }
+    <br />
+    <div class="form-group">
+        <a asp-controller="Usuario" asp-action="AltaDePago" class="btn btn-primary">Alta de pago</a>
+    </div>
+    
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetodoDePago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Monto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoDeGasto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SaldoAPagar)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetodoDePago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuarioId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoDeGasto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaldoAPagar)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

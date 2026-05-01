@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MVC.Models.DTOs.EquipoDto.EquipoListadoDto>
+
+@{
+    ViewData["Title"] = "ListadoDeEquipos";
+}
+
+<h1>ListadoDeEquipos</h1>
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Mensaje
+    </div>
+}
+<form method="post" asp-controller="Gerente" asp-action="ListadoDeEquipos">
+    <div class="input-group mb-3">
+        <span class="input-group-text">Monto $</span>
+        <input type="number" class="form-control" id="monto" name="monto" placeholder="Ej: 1500" min="0" step="0.01" required>
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-search"></i> Buscar
+        </button>
+    </div>
+</form>
+<p>
+    <a asp-action="PagosPorUsuario" asp-controller="Usuario">Volver</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

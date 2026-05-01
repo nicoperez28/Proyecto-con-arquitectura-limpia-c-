@@ -1,0 +1,133 @@
+﻿@using MVC.Models.DTOs.TipoDeGastoDTO
+@model MVC.Models.DTOs.PagoDTO.PagoDto
+@using Microsoft.AspNetCore.Http
+
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>Alta de pago</h1>
+
+
+<p>
+    <form asp-action="AltaDePago" asp-controller="Usuario" method="post">
+        <input type="hidden" value="@Context.Session.GetInt32("Id")" name="idLogueado" />
+    </form>
+</p>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AltaDePago" asp-controller="Usuario" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TipoDePago" class="control-label">Tipo de pago</label>
+                <select asp-for="TipoDePago" class="form-control" id="TipoDePago">
+                    <option value="Unico">Unico</option>
+                    <option value="Recurrente">Recurrente</option>
+                </select>
+                <span asp-validation-for="TipoDePago" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetodoDePago" class="control-label">Metodo de pago</label>
+                <select asp-for="MetodoDePago" class="form-control">
+                    @foreach (string metodoDePago in Model.MetodosDePago)
+
+                    {
+                        <option value="@metodoDePago">@metodoDePago</option>
+                    }
+                </select>
+                <span asp-validation-for="MetodoDePago" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label">Descripción</label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monto" class="control-label"></label>
+                <input asp-for="Monto" class="form-control" />
+                <span asp-validation-for="Monto" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group mb-3">
+                <label asp-for="TipoDeGastoId" class="form-label fw-semibold">Tipo de gasto:</label>
+                <select name="TipoDeGastoId" class="form-select shadow-sm rounded">
+                    @foreach (TipoDeGastoListadoDto tipoDeGastoListadoDto in Model.tiposDeGasto)
+
+                    {
+                        <option value="@tipoDeGastoListadoDto.Id">@tipoDeGastoListadoDto.Nombre</option>
+                    }
+                </select>
+                <span asp-validation-for="TipoDeGastoId" class="text-danger small"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="FechaHasta" class="control-label">Fecha hasta</label>
+                <input asp-for="FechaHasta" type="date" class="form-control" id="FechaHasta"
+                       min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="FechaHasta" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@{
+    var rol = Context.Session.GetString("Rol");
+}
+<div>
+    @if (rol == "Administrador")
+
+    {
+        <br />
+        <div class="form-group">
+            <a asp-action="ListadoDeUsuarios" asp-controller="Administrador">Volver</a>
+        </div>
+    }
+
+    else if (rol == "Gerente")
+
+    {
+        <br />
+        <div class="form-group">
+            <a asp-action="PagosPorUsuario" asp-controller="Usuario">Volver</a>
+        </div>
+    }
+    else if (rol == "Empleado")
+    {
+        <div class="form-group">
+            <a asp-action="PagosPorUsuario" asp-controller="Usuario">Volver</a>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tipoDePago = document.getElementById("TipoDePago");
+            const fechaHasta = document.getElementById("FechaHasta");
+
+            function toggleFechaHasta() {
+                if (tipoDePago.value === "Unico") {
+                    fechaHasta.disabled = true;
+                    fechaHasta.value = ""; // limpia valor si estaba cargado
+                } else {
+                    fechaHasta.disabled = false;
+                }
+            }
+
+            // Ejecutar al cargar la página
+            toggleFechaHasta();
+
+            // Ejecutar cada vez que cambie el select
+            tipoDePago.addEventListener("change", toggleFechaHasta);
+        });
+    </script>
+}

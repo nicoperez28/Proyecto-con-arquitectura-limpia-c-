@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:WebApi.Controllers.AdministradorApiController.Put(System.Int32,CasosDeUsos.DTOs.UsuarioDTO.ContraseniaDto)">
+            <summary>
+            Modifica la contraseña de un usuario administrador identificado por su ID.
+            </summary>
+            <param name="id">ID del usuario cuya contraseña se desea modificar.</param>
+            <param name="contraseniaDto">Objeto que contiene la nueva contraseña y su confirmación.</param>
+            <returns>
+            Devuelve:
+            - 200 OK si la contraseña se modificó correctamente.<br/>
+            - 400 BadRequest si los datos son inválidos.<br/>
+            - 404 NotFound si el usuario no existe.<br/>
+            - 409 Conflict si existe un conflicto de negocio.<br/>
+            - 500 InternalServerError ante un error inesperado.
+            </returns>
+        </member>
+        <member name="M:WebApi.Controllers.AdministradorApiController.Get">
+            <summary>
+            Obtiene un listado completo de todos los usuarios registrados en el sistema.
+            </summary>
+            <returns>
+            Devuelve:
+            - 200 OK con la lista de usuarios.<br/>
+            - 500 InternalServerError ante un error inesperado.
+            </returns>
+        </member>
+        <member name="M:WebApi.Controllers.AdministradorApiController.ListadoTipoDeGasto">
+            <summary>
+            Retorna un listado con todos los tipos de gasto disponibles en el sistema.
+            Solo puede ser accedido por usuarios con rol de Administrador.
+            </summary>
+            <returns>
+            200 OK: Devuelve la lista de tipos de gasto.  
+            500 InternalServerError: Ocurre cuando sucede un error inesperado durante la ejecución.
+            </returns>
+        </member>
+        <member name="M:WebApi.Controllers.AdministradorApiController.ObtenerAuditoria(System.Int32)">
+            <summary>
+            Obtiene el historial de auditoría asociado a un Tipo de gasto identificado por su ID.
+            </summary>
+            <param name="id">ID del Tipo de gasto del cual se desea obtener la auditoría.</param>
+            <returns>
+            Devuelve:
+            - 200 OK con el historial de auditoría.<br/>
+            - 400 BadRequest si el ID es inválido.<br/>
+            - 500 InternalServerError ante un error inesperado.
+            </returns>
+        </member>
+        <member name="M:WebApi.Controllers.GerenteApiController.Get">
+            <summary>
+            Obtiene el listado completo de equipos registrados en el sistema.
+            </summary>
+            <returns>
+            Devuelve:
+            - 200 OK con la lista de equipos.<br/>
+            - 500 InternalServerError si ocurre un error inesperado.
+            </returns>
+        </member>
+        <member name="M:WebApi.Controllers.GerenteApiController.Get(System.Double)">
+            <summary>
+            Obtiene un listado de equipos únicos filtrados por un monto mínimo especificado.
+            </summary>
+            <param name="monto">Monto mínimo que deben cumplir los registros para ser incluidos en el resultado.</param>
+            <returns>
+            Devuelve:
+            - 200 OK con los resultados filtrados.<br/>
+            - 400 BadRequest si el monto es inválido o menor o igual a cero.<br/>
+            - 404 NotFound si no se encuentran registros que cumplan la condición.<br/>
+            - 409 Conflict ante un conflicto de negocio.<br/>
+            - 500 InternalServerError si ocurre un error inesperado.
+            </returns>
+        </member>
+        <member name="M:WebApi.Controllers.LoginApiController.Login(CasosDeUsos.DTOs.UsuarioDTO.LoginDto)">
+            <summary>
+            Inicia sesión en el sistema validando las credenciales del usuario y genera un token JWT en caso de éxito.
+            </summary>
+            <param name="loginDto">Objeto que contiene las credenciales ingresadas por el usuario (email y contraseña).</param>
+            <returns>
+            Devuelve:
+            - 200 OK con los datos del usuario autenticado y su token.<br/>
+            - 400 BadRequest si los datos son inválidos o las credenciales son incorrectas.<br/>
+            - 500 InternalServerError ante un error inesperado.
+            </returns>
+        </member>
+        <member name="M:WebApi.Controllers.UsuarioApiController.Get">
+            <summary>
+            Obtiene los pagos asociados al usuario autenticado mediante su correo extraído del token.
+            </summary>
+            <returns>
+            Devuelve:
+            - 200 OK con los pagos del usuario.<br/>
+            - 400 BadRequest si el correo no puede obtenerse o es inválido.<br/>
+            - 404 NotFound si no se encuentran pagos asociados.<br/>
+            - 500 InternalServerError si ocurre un error inesperado.
+            </returns>
+        </member>
+        <member name="M:WebApi.Controllers.UsuarioApiController.ListaDeGastos">
+            <summary>
+            Obtiene el listado completo de tipos de gastos disponibles en el sistema.
+            </summary>
+            <returns>
+            Devuelve:
+            - 200 OK con la lista de tipos de gasto.<br/>
+            - 500 InternalServerError si ocurre un error inesperado.
+            </returns>
+        </member>
+        <member name="M:WebApi.Controllers.UsuarioApiController.MetodosDePago">
+            <summary>
+            Obtiene la lista de métodos de pago disponibles en el sistema mediante un enum.
+            </summary>
+            <returns>
+            Devuelve:
+            - 200 OK con los métodos de pago.<br/>
+            - 500 InternalServerError si ocurre un error inesperado.
+            </returns>
+        </member>
+        <member name="M:WebApi.Controllers.UsuarioApiController.Create(CasosDeUsos.DTOs.PagoDto.PagoDto)">
+            <summary>
+            Registra un nuevo pago realizado por el usuario autenticado.
+            </summary>
+            <param name="pagoDto">Objeto que contiene los datos del pago que se desea registrar.</param>
+            <returns>
+            Devuelve:
+            - 200 OK si el pago se registró correctamente.<br/>
+            - 400 BadRequest si los datos son inválidos o existe un error de negocio.<br/>
+            - 409 Conflict si ocurre un conflicto en la creación del pago.<br/>
+            - 500 InternalServerError ante un error inesperado.
+            </returns>
+        </member>
+    </members>
+</doc>

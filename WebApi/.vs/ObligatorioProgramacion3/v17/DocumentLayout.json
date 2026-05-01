@@ -1,0 +1,234 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B5F4EAAB-BD20-4BAC-A852-8FBA7881EA0E}|CasosDeUsos\\CasosDeUsos.csproj|c:\\users\\nicop\\desktop\\ort\\semestre 3\\programacion 3\\obligatoriop3-310175-307951\\solucion completa\\webapi\\casosdeusos\\dtos\\usuariodto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F4EAAB-BD20-4BAC-A852-8FBA7881EA0E}|CasosDeUsos\\CasosDeUsos.csproj|solutionrelative:casosdeusos\\dtos\\usuariodto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E3858F-8939-4770-890C-F139369A26B7}|WebApi\\WebApi.csproj|c:\\users\\nicop\\desktop\\ort\\semestre 3\\programacion 3\\obligatoriop3-310175-307951\\solucion completa\\webapi\\webapi\\controllers\\usuarioapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E3858F-8939-4770-890C-F139369A26B7}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\usuarioapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D7A4753-E962-4689-8F46-A34BD9D28DF0}|LogicaDeAccesoADatos\\LogicaDeAccesoADatos.csproj|c:\\users\\nicop\\desktop\\ort\\semestre 3\\programacion 3\\obligatoriop3-310175-307951\\solucion completa\\webapi\\logicadeaccesoadatos\\repositorios\\repositorioauditoriaef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D7A4753-E962-4689-8F46-A34BD9D28DF0}|LogicaDeAccesoADatos\\LogicaDeAccesoADatos.csproj|solutionrelative:logicadeaccesoadatos\\repositorios\\repositorioauditoriaef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D7A4753-E962-4689-8F46-A34BD9D28DF0}|LogicaDeAccesoADatos\\LogicaDeAccesoADatos.csproj|c:\\users\\nicop\\desktop\\ort\\semestre 3\\programacion 3\\obligatoriop3-310175-307951\\solucion completa\\webapi\\logicadeaccesoadatos\\repositorios\\repositoriopagoef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D7A4753-E962-4689-8F46-A34BD9D28DF0}|LogicaDeAccesoADatos\\LogicaDeAccesoADatos.csproj|solutionrelative:logicadeaccesoadatos\\repositorios\\repositoriopagoef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D7A4753-E962-4689-8F46-A34BD9D28DF0}|LogicaDeAccesoADatos\\LogicaDeAccesoADatos.csproj|c:\\users\\nicop\\desktop\\ort\\semestre 3\\programacion 3\\obligatoriop3-310175-307951\\solucion completa\\webapi\\logicadeaccesoadatos\\repositorios\\repositoriotipodegastoef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D7A4753-E962-4689-8F46-A34BD9D28DF0}|LogicaDeAccesoADatos\\LogicaDeAccesoADatos.csproj|solutionrelative:logicadeaccesoadatos\\repositorios\\repositoriotipodegastoef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{202B5DC9-7CDD-4464-8302-9615BA1112CF}|LogicaDeAplicacion\\LogicaDeAplicacion.csproj|c:\\users\\nicop\\desktop\\ort\\semestre 3\\programacion 3\\obligatoriop3-310175-307951\\solucion completa\\webapi\\logicadeaplicacion\\casosdeuso\\cutiposdegasto\\culistadotipodegasto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{202B5DC9-7CDD-4464-8302-9615BA1112CF}|LogicaDeAplicacion\\LogicaDeAplicacion.csproj|solutionrelative:logicadeaplicacion\\casosdeuso\\cutiposdegasto\\culistadotipodegasto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BaseDatoObligatorio/True/SqlTable/dbo.Auditorias.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BaseDatoObligatorio/True/SqlTable/dbo.TipoDeGastos.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{202B5DC9-7CDD-4464-8302-9615BA1112CF}|LogicaDeAplicacion\\LogicaDeAplicacion.csproj|c:\\users\\nicop\\desktop\\ort\\semestre 3\\programacion 3\\obligatoriop3-310175-307951\\solucion completa\\webapi\\logicadeaplicacion\\casosdeuso\\cuauditoria\\cuagregarauditoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{202B5DC9-7CDD-4464-8302-9615BA1112CF}|LogicaDeAplicacion\\LogicaDeAplicacion.csproj|solutionrelative:logicadeaplicacion\\casosdeuso\\cuauditoria\\cuagregarauditoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{202B5DC9-7CDD-4464-8302-9615BA1112CF}|LogicaDeAplicacion\\LogicaDeAplicacion.csproj|c:\\users\\nicop\\desktop\\ort\\semestre 3\\programacion 3\\obligatoriop3-310175-307951\\solucion completa\\webapi\\logicadeaplicacion\\casosdeuso\\cupago\\cuagregarpago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{202B5DC9-7CDD-4464-8302-9615BA1112CF}|LogicaDeAplicacion\\LogicaDeAplicacion.csproj|solutionrelative:logicadeaplicacion\\casosdeuso\\cupago\\cuagregarpago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BaseDatoObligatorio/True/SqlTable/dbo.Pagos.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E3858F-8939-4770-890C-F139369A26B7}|WebApi\\WebApi.csproj|c:\\users\\nicop\\desktop\\ort\\semestre 3\\programacion 3\\obligatoriop3-310175-307951\\solucion completa\\webapi\\webapi\\controllers\\loginapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E3858F-8939-4770-890C-F139369A26B7}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\loginapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E3858F-8939-4770-890C-F139369A26B7}|WebApi\\WebApi.csproj|c:\\users\\nicop\\desktop\\ort\\semestre 3\\programacion 3\\obligatoriop3-310175-307951\\solucion completa\\webapi\\webapi\\controllers\\administradorapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E3858F-8939-4770-890C-F139369A26B7}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\administradorapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E3858F-8939-4770-890C-F139369A26B7}|WebApi\\WebApi.csproj|c:\\users\\nicop\\desktop\\ort\\semestre 3\\programacion 3\\obligatoriop3-310175-307951\\solucion completa\\webapi\\webapi\\controllers\\gerenteapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E3858F-8939-4770-890C-F139369A26B7}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\gerenteapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\CasosDeUsos\\DTOs\\UsuarioDTO\\LoginDto.cs",
+              "RelativeDocumentMoniker": "CasosDeUsos\\DTOs\\UsuarioDTO\\LoginDto.cs",
+              "ToolTip": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\CasosDeUsos\\DTOs\\UsuarioDTO\\LoginDto.cs",
+              "RelativeToolTip": "CasosDeUsos\\DTOs\\UsuarioDTO\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-27T00:05:29.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsuarioApiController.cs",
+              "DocumentMoniker": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\WebApi\\Controllers\\UsuarioApiController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\UsuarioApiController.cs",
+              "ToolTip": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\WebApi\\Controllers\\UsuarioApiController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\UsuarioApiController.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T23:07:15.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RepositorioAuditoriaEF.cs",
+              "DocumentMoniker": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\LogicaDeAccesoADatos\\Repositorios\\RepositorioAuditoriaEF.cs",
+              "RelativeDocumentMoniker": "LogicaDeAccesoADatos\\Repositorios\\RepositorioAuditoriaEF.cs",
+              "ToolTip": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\LogicaDeAccesoADatos\\Repositorios\\RepositorioAuditoriaEF.cs",
+              "RelativeToolTip": "LogicaDeAccesoADatos\\Repositorios\\RepositorioAuditoriaEF.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T23:04:14.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CUListadoTipoDeGasto.cs",
+              "DocumentMoniker": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\LogicaDeAplicacion\\CasosDeUso\\CUTiposDeGasto\\CUListadoTipoDeGasto.cs",
+              "RelativeDocumentMoniker": "LogicaDeAplicacion\\CasosDeUso\\CUTiposDeGasto\\CUListadoTipoDeGasto.cs",
+              "ToolTip": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\LogicaDeAplicacion\\CasosDeUso\\CUTiposDeGasto\\CUListadoTipoDeGasto.cs",
+              "RelativeToolTip": "LogicaDeAplicacion\\CasosDeUso\\CUTiposDeGasto\\CUListadoTipoDeGasto.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBIAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T22:52:33.658Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RepositorioPagoEF.cs",
+              "DocumentMoniker": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\LogicaDeAccesoADatos\\Repositorios\\RepositorioPagoEF.cs",
+              "RelativeDocumentMoniker": "LogicaDeAccesoADatos\\Repositorios\\RepositorioPagoEF.cs",
+              "ToolTip": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\LogicaDeAccesoADatos\\Repositorios\\RepositorioPagoEF.cs",
+              "RelativeToolTip": "LogicaDeAccesoADatos\\Repositorios\\RepositorioPagoEF.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAwwFkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T22:51:28.963Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RepositorioTipoDeGastoEF.cs",
+              "DocumentMoniker": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\LogicaDeAccesoADatos\\Repositorios\\RepositorioTipoDeGastoEF.cs",
+              "RelativeDocumentMoniker": "LogicaDeAccesoADatos\\Repositorios\\RepositorioTipoDeGastoEF.cs",
+              "ToolTip": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\LogicaDeAccesoADatos\\Repositorios\\RepositorioTipoDeGastoEF.cs",
+              "RelativeToolTip": "LogicaDeAccesoADatos\\Repositorios\\RepositorioTipoDeGastoEF.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowDkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T22:51:19.163Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CUAgregarAuditoria.cs",
+              "DocumentMoniker": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\LogicaDeAplicacion\\CasosDeUso\\CUAuditoria\\CUAgregarAuditoria.cs",
+              "RelativeDocumentMoniker": "LogicaDeAplicacion\\CasosDeUso\\CUAuditoria\\CUAgregarAuditoria.cs",
+              "ToolTip": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\LogicaDeAplicacion\\CasosDeUso\\CUAuditoria\\CUAgregarAuditoria.cs",
+              "RelativeToolTip": "LogicaDeAplicacion\\CasosDeUso\\CUAuditoria\\CUAgregarAuditoria.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T22:42:20.036Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "dbo.Auditorias.sql",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BaseDatoObligatorio/True/SqlTable/dbo.Auditorias.sql",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BaseDatoObligatorio/True/SqlTable/dbo.Auditorias.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-12-01T22:41:21.841Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CUAgregarPago.cs",
+              "DocumentMoniker": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\LogicaDeAplicacion\\CasosDeUso\\CUPago\\CUAgregarPago.cs",
+              "RelativeDocumentMoniker": "LogicaDeAplicacion\\CasosDeUso\\CUPago\\CUAgregarPago.cs",
+              "ToolTip": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\LogicaDeAplicacion\\CasosDeUso\\CUPago\\CUAgregarPago.cs",
+              "RelativeToolTip": "LogicaDeAplicacion\\CasosDeUso\\CUPago\\CUAgregarPago.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T22:42:35.664Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "dbo.Pagos.sql",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BaseDatoObligatorio/True/SqlTable/dbo.Pagos.sql",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BaseDatoObligatorio/True/SqlTable/dbo.Pagos.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-12-01T22:41:05.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "dbo.TipoDeGastos.sql",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BaseDatoObligatorio/True/SqlTable/dbo.TipoDeGastos.sql",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/BaseDatoObligatorio/True/SqlTable/dbo.TipoDeGastos.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-12-01T22:40:06.112Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "GerenteApiController.cs",
+              "DocumentMoniker": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\WebApi\\Controllers\\GerenteApiController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\GerenteApiController.cs",
+              "ToolTip": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\WebApi\\Controllers\\GerenteApiController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\GerenteApiController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAD0AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T20:38:28.472Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AdministradorApiController.cs",
+              "DocumentMoniker": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\WebApi\\Controllers\\AdministradorApiController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\AdministradorApiController.cs",
+              "ToolTip": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\WebApi\\Controllers\\AdministradorApiController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\AdministradorApiController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAADoAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T20:18:21.29Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LoginApiController.cs",
+              "DocumentMoniker": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\WebApi\\Controllers\\LoginApiController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\LoginApiController.cs",
+              "ToolTip": "C:\\Users\\nicop\\Desktop\\ORT\\Semestre 3\\Programacion 3\\ObligatorioP3-310175-307951\\Solucion Completa\\WebApi\\WebApi\\Controllers\\LoginApiController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\LoginApiController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAiwCIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T20:12:39.886Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

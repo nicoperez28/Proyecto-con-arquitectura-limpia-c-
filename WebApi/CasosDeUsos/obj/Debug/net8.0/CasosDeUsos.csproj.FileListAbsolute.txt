@@ -1,0 +1,12 @@
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\bin\Debug\net8.0\CasosDeUsos.deps.json
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\bin\Debug\net8.0\CasosDeUsos.dll
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\bin\Debug\net8.0\CasosDeUsos.pdb
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\obj\Debug\net8.0\CasosDeUsos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\obj\Debug\net8.0\CasosDeUsos.AssemblyInfoInputs.cache
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\obj\Debug\net8.0\CasosDeUsos.AssemblyInfo.cs
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\obj\Debug\net8.0\CasosDeUsos.csproj.CoreCompileInputs.cache
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\obj\Debug\net8.0\CasosDeUsos.sourcelink.json
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\obj\Debug\net8.0\CasosDeUsos.dll
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\obj\Debug\net8.0\refint\CasosDeUsos.dll
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\obj\Debug\net8.0\CasosDeUsos.pdb
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\obj\Debug\net8.0\ref\CasosDeUsos.dll

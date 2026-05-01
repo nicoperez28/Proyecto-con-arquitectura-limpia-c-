@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CasosDeUsos\CasosDeUsos.csproj" />
+    <ProjectReference Include="..\LogicaDeAccesoADatos\LogicaDeAccesoADatos.csproj" />
+    <ProjectReference Include="..\LogicaDeNegocio\LogicaDeNegocio.csproj" />
+  </ItemGroup>
+
+</Project>

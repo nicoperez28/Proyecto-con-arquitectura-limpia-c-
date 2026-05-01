@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MVC.Models.DTOs.UsuarioDTO.UsuarioListadoDto>
+
+@{
+    ViewData["Title"] = "ListadoDeUsuarios";
+}
+
+<h1>Lista De Usuarios</h1>
+@if (TempData["Mensaje"] != null)
+{
+    if (TempData["Exito"] != null && (bool)TempData["Exito"] == true)
+    {
+        <div class="alert alert-success">
+            @TempData["Mensaje"]
+        </div>
+    }
+}
+@if (TempData["MensajeExito"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["MensajeExito"]
+    </div>
+}
+<p>
+    <a asp-action="AltaDePago" asp-controller="Usuario" >Alta de pago</a>
+</p>
+<p>
+    <a asp-action="ListaDeAuditoria" asp-controller="Administrador">Lista de Auditoria</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail)
+            </td>
+            <td>
+                    @Html.ActionLink("Modificar", "Edit", new { id=item.Id})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

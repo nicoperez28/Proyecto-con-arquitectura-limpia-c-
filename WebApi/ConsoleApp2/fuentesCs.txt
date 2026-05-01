@@ -1,0 +1,4077 @@
+﻿***********************************
+Archivo: Contexto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAccesoADatos\Contexto.cs
+***********************************
+using LogicaDeNegocio.EntidadesDeNegocio;
+using Microsoft.EntityFrameworkCore;
+
+namespace LogicaDeAccesoADatos
+{
+    public class Contexto : DbContext
+    {
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Pago> Pagos { get; set; }
+        public DbSet<PagoUnico> PagosUnicos { get; set; }
+        public DbSet<Recurrente> Recurrentes { get; set; }
+        public DbSet<TipoDeGasto> TipoDeGastos { get; set; }
+        public DbSet<Auditoria> Auditorias { get; set; }
+        public DbSet<Equipo> Equipos { get; set; }
+        public DbSet<Rol> Roles { get; set; }
+
+        public Contexto(DbContextOptions options) : base(options)
+        {
+        }
+
+        public bool ExisteEmail(string emailFinal)
+        {
+            return Usuarios.Any(u => u.Mail == emailFinal);
+        }
+    }
+}
+
+
+
+***********************************
+Archivo: WeatherForecast.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\WebApi\WeatherForecast.cs
+***********************************
+namespace WebApi
+{
+    public class WeatherForecast
+    {
+        public DateOnly Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+
+        public string? Summary { get; set; }
+    }
+}
+
+***********************************
+Archivo: PagoException.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\ExcepcionesEntidades\PagoException.cs
+***********************************
+
+
+namespace ExcepcionesPropias.ExcepcionesEntidades
+{
+    public class PagoException : Exception
+    {
+        public PagoException()
+        {
+        }
+
+        public PagoException(string? message) : base(message)
+        {
+        }
+
+        public PagoException(string? message, Exception? innerException) : base(message, innerException)
+        {
+        }
+    }
+}
+
+***********************************
+Archivo: TipoDeGastoException.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\ExcepcionesEntidades\TipoDeGastoException.cs
+***********************************
+
+namespace ExcepcionesPropias.ExcepcionesEntidades
+{
+    public class TipoDeGastoException : Exception
+    {
+        public TipoDeGastoException()
+        {
+        }
+
+        public TipoDeGastoException(string? message) : base(message)
+        {
+        }
+
+        public TipoDeGastoException(string? message, Exception? innerException) : base(message, innerException)
+        {
+        }
+    }
+}
+
+***********************************
+Archivo: UsuarioException.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\ExcepcionesEntidades\UsuarioException.cs
+***********************************
+
+namespace ExcepcionesPropias.ExcepcionesEntidades
+{
+    public class UsuarioException : Exception
+    {
+        public UsuarioException()
+        {
+        }
+
+        public UsuarioException(string? message) : base(message)
+        {
+        }
+
+        public UsuarioException(string? message, Exception? innerException) : base(message, innerException)
+        {
+        }
+    }
+}
+
+***********************************
+Archivo: ConflictException.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\ExcepcionesGenericas\ConflictException.cs
+***********************************
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExcepcionesPropias.ExcepcionesGenericas
+{
+    public class ConflictException : Exception
+    {
+        public ConflictException():base()
+        {
+        }
+
+        public ConflictException(string? message) : base(message)
+        {
+        }
+
+        public ConflictException(string? message, Exception? innerException) : base(message, innerException)
+        {
+        }
+    }
+}
+
+***********************************
+Archivo: NotFoundException.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\ExcepcionesGenericas\NotFoundException.cs
+***********************************
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExcepcionesPropias.ExcepcionesGenericas
+{
+    public class NotFoundException:Exception
+    {
+        public NotFoundException() :base()
+        {
+        }
+
+        public NotFoundException(string? message) : base(message)
+        {
+        }
+
+        public NotFoundException(string? message, Exception? innerException) : base(message, innerException)
+        {
+        }
+    }
+}
+
+***********************************
+Archivo: 20251125235036_init.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAccesoADatos\Migrations\20251125235036_init.cs
+***********************************
+using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace LogicaDeAccesoADatos.Migrations
+{
+    /// <inheritdoc />
+    public partial class init : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "Equipos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Equipos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Roles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Tipo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Roles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TipoDeGastos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Estado = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TipoDeGastos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Mail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EquipoId = table.Column<int>(type: "int", nullable: false),
+                    RolId = table.Column<int>(type: "int", nullable: false),
+                    Contrasenia_Value = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Usuarios_Equipos_EquipoId",
+                        column: x => x.EquipoId,
+                        principalTable: "Equipos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Usuarios_Roles_RolId",
+                        column: x => x.RolId,
+                        principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Auditorias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TipoDeGastoId = table.Column<int>(type: "int", nullable: false),
+                    Mail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Accion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Auditorias", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Auditorias_TipoDeGastos_TipoDeGastoId",
+                        column: x => x.TipoDeGastoId,
+                        principalTable: "TipoDeGastos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pagos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MetodoDePago = table.Column<int>(type: "int", nullable: false),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Monto = table.Column<double>(type: "float", nullable: false),
+                    UsuarioId = table.Column<int>(type: "int", nullable: false),
+                    TipoDeGastoId = table.Column<int>(type: "int", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    FechaDePago = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    NumeroDeRecibo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FechaDesde = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaHasta = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pagos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Pagos_TipoDeGastos_TipoDeGastoId",
+                        column: x => x.TipoDeGastoId,
+                        principalTable: "TipoDeGastos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Pagos_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Auditorias_TipoDeGastoId",
+                table: "Auditorias",
+                column: "TipoDeGastoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pagos_TipoDeGastoId",
+                table: "Pagos",
+                column: "TipoDeGastoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pagos_UsuarioId",
+                table: "Pagos",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_EquipoId",
+                table: "Usuarios",
+                column: "EquipoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_RolId",
+                table: "Usuarios",
+                column: "RolId");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "Auditorias");
+
+            migrationBuilder.DropTable(
+                name: "Pagos");
+
+            migrationBuilder.DropTable(
+                name: "TipoDeGastos");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
+
+            migrationBuilder.DropTable(
+                name: "Equipos");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
+        }
+    }
+}
+
+***********************************
+Archivo: 20251125235036_init.Designer.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAccesoADatos\Migrations\20251125235036_init.Designer.cs
+***********************************
+// <auto-generated />
+using System;
+using System.Collections.Generic;
+using LogicaDeAccesoADatos;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+#nullable disable
+
+namespace LogicaDeAccesoADatos.Migrations
+{
+    [DbContext(typeof(Contexto))]
+    [Migration("20251125235036_init")]
+    partial class init
+    {
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.20")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Auditoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Accion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Mail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TipoDeGastoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TipoDeGastoId");
+
+                    b.ToTable("Auditorias");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Equipo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Equipos");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Pago", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
+                    b.Property<int>("MetodoDePago")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Monto")
+                        .HasColumnType("float");
+
+                    b.Property<int>("TipoDeGastoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TipoDeGastoId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Pagos");
+
+                    b.HasDiscriminator().HasValue("Pago");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Rol", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.TipoDeGasto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Estado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoDeGastos");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Apellido")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EquipoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Mail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RolId")
+                        .HasColumnType("int");
+
+                    b.ComplexProperty<Dictionary<string, object>>("Contrasenia", "LogicaDeNegocio.EntidadesDeNegocio.Usuario.Contrasenia#Contrasenia", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+                        });
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EquipoId");
+
+                    b.HasIndex("RolId");
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.PagoUnico", b =>
+                {
+                    b.HasBaseType("LogicaDeNegocio.EntidadesDeNegocio.Pago");
+
+                    b.Property<DateTime>("FechaDePago")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NumeroDeRecibo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("PagoUnico");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Recurrente", b =>
+                {
+                    b.HasBaseType("LogicaDeNegocio.EntidadesDeNegocio.Pago");
+
+                    b.Property<DateTime>("FechaDesde")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaHasta")
+                        .HasColumnType("datetime2");
+
+                    b.HasDiscriminator().HasValue("Recurrente");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Auditoria", b =>
+                {
+                    b.HasOne("LogicaDeNegocio.EntidadesDeNegocio.TipoDeGasto", "TipoDeGasto")
+                        .WithMany()
+                        .HasForeignKey("TipoDeGastoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TipoDeGasto");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Pago", b =>
+                {
+                    b.HasOne("LogicaDeNegocio.EntidadesDeNegocio.TipoDeGasto", "TipoDeGasto")
+                        .WithMany()
+                        .HasForeignKey("TipoDeGastoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LogicaDeNegocio.EntidadesDeNegocio.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TipoDeGasto");
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Usuario", b =>
+                {
+                    b.HasOne("LogicaDeNegocio.EntidadesDeNegocio.Equipo", "Equipo")
+                        .WithMany("usuarios")
+                        .HasForeignKey("EquipoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LogicaDeNegocio.EntidadesDeNegocio.Rol", "Rol")
+                        .WithMany()
+                        .HasForeignKey("RolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Equipo");
+
+                    b.Navigation("Rol");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Equipo", b =>
+                {
+                    b.Navigation("usuarios");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+***********************************
+Archivo: ContextoModelSnapshot.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAccesoADatos\Migrations\ContextoModelSnapshot.cs
+***********************************
+// <auto-generated />
+using System;
+using System.Collections.Generic;
+using LogicaDeAccesoADatos;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+#nullable disable
+
+namespace LogicaDeAccesoADatos.Migrations
+{
+    [DbContext(typeof(Contexto))]
+    partial class ContextoModelSnapshot : ModelSnapshot
+    {
+        protected override void BuildModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.20")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Auditoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Accion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Mail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TipoDeGastoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TipoDeGastoId");
+
+                    b.ToTable("Auditorias");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Equipo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Equipos");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Pago", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
+                    b.Property<int>("MetodoDePago")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Monto")
+                        .HasColumnType("float");
+
+                    b.Property<int>("TipoDeGastoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TipoDeGastoId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Pagos");
+
+                    b.HasDiscriminator().HasValue("Pago");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Rol", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.TipoDeGasto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Estado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoDeGastos");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Apellido")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EquipoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Mail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RolId")
+                        .HasColumnType("int");
+
+                    b.ComplexProperty<Dictionary<string, object>>("Contrasenia", "LogicaDeNegocio.EntidadesDeNegocio.Usuario.Contrasenia#Contrasenia", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+                        });
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EquipoId");
+
+                    b.HasIndex("RolId");
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.PagoUnico", b =>
+                {
+                    b.HasBaseType("LogicaDeNegocio.EntidadesDeNegocio.Pago");
+
+                    b.Property<DateTime>("FechaDePago")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NumeroDeRecibo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("PagoUnico");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Recurrente", b =>
+                {
+                    b.HasBaseType("LogicaDeNegocio.EntidadesDeNegocio.Pago");
+
+                    b.Property<DateTime>("FechaDesde")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaHasta")
+                        .HasColumnType("datetime2");
+
+                    b.HasDiscriminator().HasValue("Recurrente");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Auditoria", b =>
+                {
+                    b.HasOne("LogicaDeNegocio.EntidadesDeNegocio.TipoDeGasto", "TipoDeGasto")
+                        .WithMany()
+                        .HasForeignKey("TipoDeGastoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TipoDeGasto");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Pago", b =>
+                {
+                    b.HasOne("LogicaDeNegocio.EntidadesDeNegocio.TipoDeGasto", "TipoDeGasto")
+                        .WithMany()
+                        .HasForeignKey("TipoDeGastoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LogicaDeNegocio.EntidadesDeNegocio.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TipoDeGasto");
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Usuario", b =>
+                {
+                    b.HasOne("LogicaDeNegocio.EntidadesDeNegocio.Equipo", "Equipo")
+                        .WithMany("usuarios")
+                        .HasForeignKey("EquipoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LogicaDeNegocio.EntidadesDeNegocio.Rol", "Rol")
+                        .WithMany()
+                        .HasForeignKey("RolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Equipo");
+
+                    b.Navigation("Rol");
+                });
+
+            modelBuilder.Entity("LogicaDeNegocio.EntidadesDeNegocio.Equipo", b =>
+                {
+                    b.Navigation("usuarios");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+***********************************
+Archivo: RepositorioAuditoriaEF.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAccesoADatos\Repositorios\RepositorioAuditoriaEF.cs
+***********************************
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+using Microsoft.EntityFrameworkCore;
+
+namespace LogicaDeAccesoADatos.Repositorios
+{
+    public class RepositorioAuditoriaEF : IRepositorioAuditoria
+    {
+        public Contexto Contexto { get; set; }
+        public RepositorioAuditoriaEF(Contexto contexto)
+        {
+            Contexto = contexto;
+        }
+        public void Add(Auditoria item)
+        {
+            if (item != null)
+            {
+                Contexto.Auditorias.Add(item);
+                Contexto.SaveChanges();
+            }
+            else
+            {
+                throw new TipoDeGastoException("Datos Invalidos");
+            }
+        }
+
+        public IEnumerable<Auditoria> ListadoDeAuditoria(int idAuditado) 
+        {
+            return Contexto.Auditorias
+                    .Include(a => a.TipoDeGasto)
+                    .Where(a =>  a.TipoDeGasto.Id == idAuditado)
+                    .ToList();
+        }
+    }
+}
+
+***********************************
+Archivo: RepositorioEquipoEF.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAccesoADatos\Repositorios\RepositorioEquipoEF.cs
+***********************************
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAccesoADatos.Repositorios
+{
+    public class RepositorioEquipoEF : IRepositorioEquipo
+    {
+        public Contexto Contexto { get; set; }
+        public RepositorioEquipoEF(Contexto contexto)
+        {
+            Contexto = contexto;
+        }
+
+        public void Add(Equipo item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Equipo GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Equipo> GetAll()
+        {
+            return Contexto.Equipos;
+        }
+    }
+}
+
+***********************************
+Archivo: RepositorioPagoEF.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAccesoADatos\Repositorios\RepositorioPagoEF.cs
+***********************************
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+using Microsoft.EntityFrameworkCore;
+
+namespace LogicaDeAccesoADatos.Repositorios
+{
+    public class RepositorioPagoEF : IRepositorioPago
+    {
+        public Contexto Contexto { get; set; }
+        public RepositorioPagoEF(Contexto contexto)
+        {
+            Contexto = contexto;
+        }
+        public void Add(Pago item)
+        {
+            if (item != null)
+            {
+                Contexto.Pagos.Add(item);
+                Contexto.SaveChanges();
+            }
+            else
+            {
+                throw new PagoException("Datos Invalidos");
+            }
+        }
+
+        public IEnumerable<Pago> GetAll()
+        {
+            return Contexto.Pagos
+                       .Include(p => p.TipoDeGasto)
+                       .Include(p => p.Usuario)
+                       .ToList();
+        }
+
+        public Pago GetById(int id)
+        {
+            return Contexto.Pagos
+                .Include(p => p.TipoDeGasto)
+                .Include(p => p.Usuario)
+                .Where(p => p.Id == id)
+                .SingleOrDefault();
+        }
+
+        public IEnumerable<Pago> GetAllPagoUnico(DateTime fechaFiltro)
+        {
+            bool tienePagos = Contexto.PagosUnicos.Any(p => p.FechaDePago.Month == fechaFiltro.Month &&
+                                                            p.FechaDePago.Year == fechaFiltro.Year);
+
+            if (!tienePagos)
+            {
+                throw new PagoException("No existen registros en esa fecha");
+            }
+
+            return Contexto.PagosUnicos
+                       .Include(p => p.TipoDeGasto)
+                       .Include(p => p.Usuario)
+                       .Where(p => p.FechaDePago.Month == fechaFiltro.Month &&
+                                   p.FechaDePago.Year == fechaFiltro.Year)
+                       .ToList();
+        }
+
+        public IEnumerable<Pago> GetAllRecurrente(DateTime fechaFiltro)
+        {
+            bool tienePagos = Contexto.Recurrentes.Any(p => p.FechaDesde.Month == fechaFiltro.Month &&
+                                                            p.FechaDesde.Year == fechaFiltro.Year);
+            if (!tienePagos)
+            {
+                throw new PagoException("No existen registros en esa fecha");
+            }
+
+            return Contexto.Recurrentes
+                       .Include(p => p.TipoDeGasto)
+                       .Include(p => p.Usuario)
+                       .Where(p => p.FechaDesde.Month == fechaFiltro.Month &&
+                                    p.FechaDesde.Year == fechaFiltro.Year)
+                       .ToList();
+
+        }
+
+        public IEnumerable<Equipo> FiltrarPagoUnicoPorMonto(double monto)
+        {
+            bool tienePagos = Contexto.PagosUnicos.Any(p => p.Monto > monto);
+
+            if (!tienePagos)
+            {
+                throw new PagoException("No existen registros con ese monto o superior");
+            }
+
+            return Contexto.PagosUnicos
+                        .Include(p => p.Usuario)
+                            .ThenInclude(u => u.Equipo)
+                        .Where(p => p.Monto > monto)
+                        .Select(p => p.Usuario.Equipo)
+                        .Distinct()
+                        .OrderByDescending(e => e.Nombre)
+                        .ToList();
+        }
+
+        public IEnumerable<Pago> FiltrarPagoPorMail(string mail)
+        {
+            return Contexto.Pagos
+                    .Include (p => p.TipoDeGasto)
+                    .Include(p => p.Usuario)
+                    .Where(p => p.Usuario.Mail == mail);
+        }
+
+        IEnumerable<Pago> IRepositorioPago.FiltrarPagoUnico(double monto)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+***********************************
+Archivo: RepositorioRolEF.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAccesoADatos\Repositorios\RepositorioRolEF.cs
+***********************************
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAccesoADatos.Repositorios
+{
+    public class RepositorioRolEF : IRepositorioRol
+    {
+        public Contexto Contexto { get; set; }
+        public RepositorioRolEF(Contexto contexto)
+        {
+            Contexto = contexto;
+        }
+        public void Add(Rol item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Rol> GetAll()
+        {
+
+            return Contexto.Roles
+                .Where(r => r.Id != 1)
+                .ToList();
+
+        }
+
+        public Rol GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+***********************************
+Archivo: RepositorioTipoDeGastoEF.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAccesoADatos\Repositorios\RepositorioTipoDeGastoEF.cs
+***********************************
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAccesoADatos.Repositorios
+{
+    public class RepositorioTipoDeGastoEF : IRepositorioTipoDeGasto
+    {
+        public Contexto Contexto { get; set; }
+        public RepositorioTipoDeGastoEF(Contexto contexto)
+        {
+            Contexto = contexto;
+        }
+
+        public void Add(TipoDeGasto item)
+        {
+            if (item != null)
+            {
+                Contexto.TipoDeGastos.Add(item);
+                Contexto.SaveChanges();
+            }
+            else
+            {
+                throw new TipoDeGastoException("Datos Invalidos");
+            }
+        }
+
+        public void Delete(TipoDeGasto item)
+        {
+            bool tienePagos = Contexto.Pagos.Any(p => p.TipoDeGastoId == item.Id);
+
+            if (tienePagos)
+            {
+                throw new TipoDeGastoException("Tipo de gasto asociado a un pago");
+            }
+
+            Contexto.TipoDeGastos.Remove(item);
+            Contexto.SaveChanges();
+        }
+
+
+        public void Update(int id, TipoDeGasto item)
+        {
+            item.Validar();
+            TipoDeGasto tipoDeGasto = GetById(id);
+            if (tipoDeGasto != null)
+            {
+                tipoDeGasto.Nombre = item.Nombre;
+                tipoDeGasto.Descripcion = item.Descripcion;
+                Contexto.SaveChanges();
+            }
+            else
+            {
+                throw new TipoDeGastoException("El Tipo de Gasto no existe");
+            }
+        }
+        public IEnumerable<TipoDeGasto> GetAll()
+        {
+            return Contexto.TipoDeGastos;
+        }
+
+        public TipoDeGasto GetById(int id)
+        {
+            return Contexto.TipoDeGastos.Find(id);
+        }
+    }
+}
+
+***********************************
+Archivo: RepositorioUsuarioEF.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAccesoADatos\Repositorios\RepositorioUsuarioEF.cs
+***********************************
+
+using ExcepcionesPropias.ExcepcionesEntidades;
+using ExcepcionesPropias.ExcepcionesGenericas;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+using LogicaDeNegocio.ValueObject;
+using Microsoft.EntityFrameworkCore;
+using System.Globalization;
+using System.Text;
+
+namespace LogicaDeAccesoADatos.Repositorios
+{
+    public class RepositorioUsuarioEF : IRepositorioUsuario
+    {
+        public Contexto Contexto { get; set; }
+        private readonly Random _random = new Random();
+        public RepositorioUsuarioEF(Contexto contexto)
+        {
+            Contexto = contexto;
+        }
+        public void Add(Usuario item)
+        {
+            Usuario usuario = new Usuario
+            {
+                Nombre = item.Nombre,
+                Apellido = item.Apellido,
+                EquipoId = item.EquipoId,
+                Mail = GenerarEmail(item.Nombre, item.Apellido),
+                RolId = item.RolId,
+                Contrasenia = item.Contrasenia,
+            };
+            if (usuario != null)
+            {
+                Contexto.Usuarios.Add(usuario);
+                Contexto.SaveChanges();
+            }
+            else
+            {
+                throw new UsuarioException("Datos Invalidos");
+            }
+
+        }
+        public string GenerarEmail(string nombre, string apellido)
+        {
+            string nombreLimpio = LimpiarTexto(nombre.ToLower());
+            string apellidoLimpio = LimpiarTexto(apellido.ToLower());
+
+            string parteNombre = nombreLimpio.Length < 3 ? nombreLimpio : nombreLimpio.Substring(0, 3);
+            string parteApellido = apellidoLimpio.Length < 3 ? apellidoLimpio : apellidoLimpio.Substring(0, 3);
+
+            string baseEmail = parteNombre + parteApellido;
+            string emailFinal = baseEmail + "@laEmpresa.com";
+
+            while (Contexto.ExisteEmail(emailFinal))
+            {
+                int numero = _random.Next(1000, 9999);
+                emailFinal = baseEmail + numero + "@laEmpresa.com";
+            }
+
+            return emailFinal;
+        }
+
+        public string LimpiarTexto(string texto)
+        {
+            string textoNormalizado = texto.Normalize(NormalizationForm.FormD);
+            var sb = new StringBuilder();
+
+            foreach (char c in textoNormalizado)
+            {
+                var categoria = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (categoria != UnicodeCategory.NonSpacingMark)
+                {
+                    if (c == 'ñ') sb.Append('n');
+                    else if (c == 'Ñ') sb.Append('n');
+                    else sb.Append(c);
+                }
+            }
+
+            return sb.ToString().Normalize(NormalizationForm.FormC);
+        }
+
+        public IEnumerable<Usuario> GetAll()
+        {
+            return Contexto.Usuarios;
+        }
+
+        public Usuario GetById(int id)
+        {
+            return Contexto.Usuarios
+                .Where(x => x.Id == id)
+                .SingleOrDefault();
+        }
+
+        public Usuario GetByEmail(string mail, string contrasenia)
+        {
+            return Contexto.Usuarios
+                .Include(u => u.Rol)
+                .Where(u => u.Mail == mail && u.Contrasenia.Value == contrasenia)
+                .SingleOrDefault();
+        }
+
+        public Usuario BuscarUsuarioByMail(string mail)
+        {
+            return Contexto.Usuarios
+            .Include(u => u.Rol)
+                .Where(u => u.Mail == mail)
+                .SingleOrDefault();
+        }
+
+        public void ModificarContrasenia(int id, Usuario usuario)
+        {
+                Contexto.SaveChanges();  
+        }
+    }
+}
+***********************************
+Archivo: AuditoriaMapper.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\Mappers\AuditoriaMapper.cs
+***********************************
+using CasosDeUsos.DTOs.AuditoriaDTO;
+using CasosDeUsos.DTOs.EquipoDTO;
+using LogicaDeNegocio.EntidadesDeNegocio;
+
+namespace LogicaDeAplicacion.Mappers
+{
+    public class AuditoriaMapper
+    {
+        public static Auditoria AuditoriaDtoToAuditoria(AuditoriaDto auditoriaDto)
+        {
+            return new Auditoria(
+                                auditoriaDto.Mail, 
+                                auditoriaDto.Accion);
+        }
+
+        public static IEnumerable<AuditoriaDto>
+            AuditoriaToAuditoriaDto(IEnumerable<Auditoria> auditorias)
+        {
+            List<AuditoriaDto> auditoriaDto = new List<AuditoriaDto>();
+            foreach (Auditoria auditoria in auditorias)
+            {
+                auditoriaDto.Add(new AuditoriaDto()
+                {
+                    Mail = auditoria.Mail,
+                    Accion = auditoria.Accion,
+                    Fecha = auditoria.Fecha,
+                    NombreTipoDeGasto = auditoria.TipoDeGasto.Nombre,
+                    DescripcionTipoDeGasto = auditoria.TipoDeGasto.Descripcion
+
+                });
+            }
+            return auditoriaDto;
+
+        }
+    }
+}
+
+***********************************
+Archivo: EquipoMapper.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\Mappers\EquipoMapper.cs
+***********************************
+using CasosDeUsos.DTOs.EquipoDTO;
+using CasosDeUsos.DTOs.TipoDeGastoDTO;
+using LogicaDeNegocio.EntidadesDeNegocio;
+
+namespace LogicaDeAplicacion.Mappers
+{
+    public class EquipoMapper
+    {
+        public static IEnumerable<EquipoListadoDto>
+            EquipoListadoToEquipoListadoDto(IEnumerable<Equipo> equipos)
+        {
+            List<EquipoListadoDto> equipoListado = new List<EquipoListadoDto>();
+            foreach (Equipo equipo in equipos)
+            {
+                equipoListado.Add(new EquipoListadoDto()
+                {
+                    Id=equipo.Id,
+                    Nombre = equipo.Nombre,
+                });
+            }
+            return equipoListado;
+
+        }
+    }
+}
+
+***********************************
+Archivo: PagoMapper.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\Mappers\PagoMapper.cs
+***********************************
+using CasosDeUsos.DTOs.EquipoDTO;
+using CasosDeUsos.DTOs.PagoDto;
+using LogicaDeNegocio.EntidadesDeNegocio;
+
+namespace LogicaDeAplicacion.Mappers
+{
+    public class PagoMapper
+    {
+        public static Pago PagoDtoToPago(PagoDto pagoDto)
+        {
+            var metodo = Enum.Parse<MetodoDePago>(pagoDto.MetodoDePago, ignoreCase: true);
+            if (pagoDto.TipoDePago == "Unico")
+            {
+                return new PagoUnico(metodo, pagoDto.Descripcion, pagoDto.Monto,
+                                    pagoDto.TipoDeGastoId, pagoDto.UsuarioId);
+            }
+            else
+            {
+                return new Recurrente(metodo, pagoDto.Descripcion, pagoDto.Monto,
+                                      pagoDto.TipoDeGastoId, pagoDto.UsuarioId, pagoDto.FechaHasta);
+            }
+        }
+        public static IEnumerable<PagoListadoDto>
+        PagoListadoToPagoListadoDto(IEnumerable<Pago> Pagos)
+        {
+            List<PagoListadoDto> pagoListado = new List<PagoListadoDto>();
+            foreach (Pago pago in Pagos)
+            {
+                pagoListado.Add(new PagoListadoDto()
+                {
+                    Id = pago.Id,
+                    MetodoDePago = pago.MetodoDePago.ToString(),
+                    Monto = pago.Monto,
+                    UsuarioId = pago.UsuarioId,
+                    TipoDeGasto = pago.TipoDeGasto.Nombre,
+                    SaldoAPagar = pago.CalcularMontoTotal(),
+                });
+            }
+            return pagoListado;
+        }
+
+        public static IEnumerable<PagoFiltradoDto>
+        PagoFiltradoToPagoFiltradoDto(IEnumerable<Pago> pagosUnicos, IEnumerable<Pago> pagosRecurrentes)
+        {
+            List<PagoFiltradoDto> pagoListado = new List<PagoFiltradoDto>();
+
+            foreach (Pago pago in pagosUnicos)
+            {
+                pagoListado.Add(new PagoFiltradoDto()
+                {
+                    Id = pago.Id,
+                    MetodoDePago = pago.MetodoDePago.ToString(),
+                    Monto = pago.Monto,
+                    UsuarioId = pago.UsuarioId,
+                    TipoDeGasto = pago.TipoDeGasto.Nombre,
+                    SaldoAPagar = pago.CalcularMontoTotal(),
+                });
+            }
+
+            // Mapeo de pagos recurrentes
+            foreach (Pago pago in pagosRecurrentes)
+            {
+                pagoListado.Add(new PagoFiltradoDto()
+                {
+                    Id = pago.Id,
+                    MetodoDePago = pago.MetodoDePago.ToString(),
+                    Monto = pago.Monto,
+                    UsuarioId = pago.UsuarioId,
+                    TipoDeGasto = pago.TipoDeGasto.Nombre,
+                    SaldoAPagar = pago.CalcularMontoTotal(),
+                });
+            }
+
+            return pagoListado;
+        }
+        public static IEnumerable<PagoFiltradoMontoDto>
+        PagoFiltradoMontoToPagoFiltradoMontoDto(IEnumerable<Pago> pagosUnicos)
+        {
+            List<PagoFiltradoMontoDto> pagoListado = new List<PagoFiltradoMontoDto>();
+
+            foreach (Pago pago in pagosUnicos)
+            {
+                pagoListado.Add(new PagoFiltradoMontoDto()
+                {
+                    Id = pago.Id,
+                    Monto = pago.Monto,
+                    UsuarioId = pago.UsuarioId,
+                    NombreUsuario = pago.Usuario.Nombre,
+                    ApellidoUsuario = pago.Usuario.Apellido
+                });
+            }
+            return pagoListado;
+        }
+
+        public static PagoDetalleDto PagoToPagoDetalleDto(Pago pago)
+        {
+            if (pago == null)
+            {
+                throw new ArgumentNullException("Error en los datos");
+            }
+            DateTime? fechaDesde = null;
+            DateTime? fechaHasta = null;
+            string tipoDePago = "";
+            if (pago is Recurrente recurrente)
+            {
+                fechaDesde = recurrente.FechaDesde;
+                fechaHasta = recurrente.FechaHasta;
+                tipoDePago = "Recurrente";
+            }
+            else if (pago is PagoUnico unico)
+            {
+                fechaDesde = unico.FechaDePago; // lo guardamos en FechaDesde
+                tipoDePago = "Pago Unico";
+            }
+            
+            return new PagoDetalleDto()
+            {
+                Id = pago.Id,
+                TipoDePago = tipoDePago,
+                MetodoDePago = pago.MetodoDePago.ToString(),
+                Descripcion = pago.Descripcion,
+                Monto = pago.Monto,
+                TipoDeGasto = pago.TipoDeGasto.Nombre,
+                UsuarioNombre = pago.Usuario.Nombre,
+                UsuarioApellido = pago.Usuario.Apellido,
+                FechaDesde = fechaDesde,
+                FechaHasta = fechaHasta,
+            };
+        }
+
+        public static IEnumerable<EquipoListadoDto>
+        PagoFiltradoMontoToPagoListadoEquipoDto(IEnumerable<Equipo> equipos)
+        {
+            List<EquipoListadoDto> equipoListado = new List<EquipoListadoDto>();
+
+            foreach (Equipo equipo in equipos)
+            {
+                equipoListado.Add(new EquipoListadoDto()
+                {
+                    Id = equipo.Id,
+                    Nombre = equipo.Nombre,
+                });
+            }
+            return equipoListado;
+        }
+    }
+}
+
+
+***********************************
+Archivo: RolMapper.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\Mappers\RolMapper.cs
+***********************************
+
+using CasosDeUsos.DTOs.EquipoDTO;
+using CasosDeUsos.DTOs.Rol;
+using LogicaDeNegocio.EntidadesDeNegocio;
+
+namespace LogicaDeAplicacion.Mappers
+{
+    public class RolMapper
+    {
+        public static IEnumerable<RolListadoDto>
+            RolListadoToRolListadoDto(IEnumerable<Rol> roles)
+        {
+            List<RolListadoDto> rolListado = new List<RolListadoDto>();
+            foreach (Rol rol in roles)
+            {
+                rolListado.Add(new RolListadoDto()
+                {
+                    Id = rol.Id,
+                    Tipo = rol.Tipo,
+                });
+            }
+            return rolListado;
+
+        }
+    }
+}
+
+***********************************
+Archivo: TipoDeGastoMapper.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\Mappers\TipoDeGastoMapper.cs
+***********************************
+
+
+using CasosDeUsos.DTOs.TipoDeGastoDTO;
+using LogicaDeNegocio.EntidadesDeNegocio;
+
+namespace LogicaDeAplicacion.Mappers
+{
+    public class TipoDeGastoMapper
+    {
+        
+        public static IEnumerable<TipoDeGastoListadoDto>
+            TipoDeGastoListadoToTipoDeGastoListadoDto(IEnumerable<TipoDeGasto> TipoDeGastos)
+        {
+            List<TipoDeGastoListadoDto> tipoDeGastoListado = new List<TipoDeGastoListadoDto>();
+            foreach (TipoDeGasto tipoDeGasto in TipoDeGastos)
+            {
+                tipoDeGastoListado.Add(new TipoDeGastoListadoDto()
+                {
+                    Id = tipoDeGasto.Id,
+                    Nombre = tipoDeGasto.Nombre,
+                    Descripcion = tipoDeGasto.Descripcion,
+                });
+            }
+            return tipoDeGastoListado;
+
+        }
+
+        public static TipoDeGastoListadoDto TipoDeGastoToTipoDeGastoListadoDto(TipoDeGasto tipoDeGasto)
+        {
+            if (tipoDeGasto == null)
+            {
+                throw new ArgumentNullException("Error en los datos");
+            }
+
+            return new TipoDeGastoListadoDto()
+            {
+                Id = tipoDeGasto.Id,
+                Nombre = tipoDeGasto.Nombre,
+                Descripcion = tipoDeGasto.Descripcion,
+            };
+        }
+    }
+}
+
+***********************************
+Archivo: UsuarioMapper.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\Mappers\UsuarioMapper.cs
+***********************************
+using CasosDeUsos.DTOs.PagoDto;
+using CasosDeUsos.DTOs.TipoDeGastoDTO;
+using CasosDeUsos.DTOs.UsuarioDTO;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.ValueObject;
+using System.Reflection.Metadata.Ecma335;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace LogicaDeAplicacion.Mappers
+{
+    public class UsuarioMapper
+    {
+        public static UsuarioLogueadoDto UsuarioToUsuarioLogueadoDto(Usuario usuario)
+        {
+            if(usuario == null)
+            {
+                throw new ArgumentNullException("Error en los datos");
+            }
+            return new UsuarioLogueadoDto()
+            {
+                Id = usuario.Id,
+                Mail = usuario.Mail,
+                Rol = usuario.Rol.Tipo,
+            };
+        }
+
+        public static Usuario AltaUsuarioDtoToUsuario(AltaUsuarioDto altaUsuarioDto)
+        {
+            return new Usuario(altaUsuarioDto.Nombre,
+                                altaUsuarioDto.Apellido,
+                                altaUsuarioDto.EquipoId,
+                                altaUsuarioDto.RolId,
+                                altaUsuarioDto.Contrasenia);
+        }
+
+        public static IEnumerable<UsuarioListadoDto> UsuarioListadoToUsuarioListadoDto(IEnumerable<Usuario> usuarios)
+        {
+            List<UsuarioListadoDto> listadoUsuarios = new List<UsuarioListadoDto>();
+            foreach (Usuario usuario in usuarios)
+            {
+                listadoUsuarios.Add(new UsuarioListadoDto()
+                {
+                    Id = usuario.Id,
+                    Nombre = usuario.Nombre,
+                    Apellido = usuario.Apellido,
+                    Mail = usuario.Mail,
+                });
+                
+            }
+         return listadoUsuarios;
+        }
+    }
+}
+***********************************
+Archivo: Auditoria.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\EntidadesDeNegocio\Auditoria.cs
+***********************************
+namespace LogicaDeNegocio.EntidadesDeNegocio
+{
+    public class Auditoria
+    {
+        public int Id { get; set; }
+        public TipoDeGasto TipoDeGasto { get; set; }
+        public string Mail { get; set; }
+        public string Accion { get; set; }
+        public DateTime Fecha { get; set; }
+
+        public Auditoria()
+        {
+        }
+
+        public Auditoria(string mail, string accion)
+        {
+            Mail = mail;
+            Accion = accion;
+            Fecha = DateTime.Now;
+        }
+    }
+}
+
+***********************************
+Archivo: Equipo.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\EntidadesDeNegocio\Equipo.cs
+***********************************
+
+
+namespace LogicaDeNegocio.EntidadesDeNegocio
+{
+    public class Equipo
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public List<Usuario> usuarios { get; private set; }
+    }
+}
+
+***********************************
+Archivo: MetodoDePago.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\EntidadesDeNegocio\MetodoDePago.cs
+***********************************
+
+
+namespace LogicaDeNegocio.EntidadesDeNegocio
+{
+    public enum MetodoDePago
+    {
+        Credito,
+        Efectivo,
+    }
+}
+
+***********************************
+Archivo: Pago.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\EntidadesDeNegocio\Pago.cs
+***********************************
+
+
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeNegocio.InterfacesEntidades;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace LogicaDeNegocio.EntidadesDeNegocio
+{
+    public abstract class Pago : IValidable
+    {
+        public int Id { get; set; }
+        public MetodoDePago MetodoDePago { get; set; }
+        public string Descripcion { get; set; }
+        public double Monto { get; set; }
+        public TipoDeGasto TipoDeGasto { get; set; }
+        public Usuario Usuario { get; set; }
+        public int UsuarioId{ get; set; }
+        public int TipoDeGastoId { get; set; }
+
+        public Pago(MetodoDePago metodoDePago, string descripcion, double monto, TipoDeGasto tipoDeGasto, Usuario usuario)
+        {
+            MetodoDePago = metodoDePago;
+            Descripcion = descripcion;
+            Monto = monto;
+            TipoDeGasto = tipoDeGasto;
+            Usuario = usuario;
+            Validar();
+        }
+        public Pago(MetodoDePago metodoDePago, string descripcion, double monto, int tipoDeGastoId, int usuarioId)
+        {
+            MetodoDePago = metodoDePago;
+            Descripcion = descripcion;
+            Monto = monto;
+            TipoDeGastoId = tipoDeGastoId;
+            UsuarioId = usuarioId;
+            Validar();
+        }
+
+        public Pago()
+        {
+        }
+
+        public void Validar()
+        {
+            ValidarDescripcion();
+            ValidarMonto();
+        }
+
+        private void ValidarDescripcion()
+        {
+            if (string.IsNullOrEmpty(Descripcion))
+            {
+                throw new PagoException("La Descripcion es obligatoria");
+            }
+        }
+
+        private void ValidarMonto()
+        {
+            if (Monto < 0)
+            {
+                throw new PagoException("El monto debe ser mayor a 0");
+            }
+        }
+
+        public abstract double CalcularMontoTotal();
+    }
+}
+
+***********************************
+Archivo: PagoUnico.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\EntidadesDeNegocio\PagoUnico.cs
+***********************************
+
+
+namespace LogicaDeNegocio.EntidadesDeNegocio
+{
+    public class PagoUnico : Pago
+    {
+        public DateTime FechaDePago { get; set; }
+        public string NumeroDeRecibo { get; set; }
+        public PagoUnico(MetodoDePago metodoDePago, string descripcion, double monto, TipoDeGasto tipoDeGasto, Usuario usuario) : base(metodoDePago, descripcion, monto, tipoDeGasto, usuario)
+        {
+            FechaDePago = DateTime.Now;
+            NumeroDeRecibo = GenerarNumeroRecibo();
+        }
+        public PagoUnico(MetodoDePago metodoDePago, string descripcion, double monto, int tipoDeGastoId, int usuarioId) : base(metodoDePago, descripcion, monto, tipoDeGastoId, usuarioId)
+        {
+            FechaDePago = DateTime.Now;
+            NumeroDeRecibo = GenerarNumeroRecibo();
+        }
+        protected PagoUnico()
+        {
+        }
+        public override double CalcularMontoTotal()
+        {
+            return 0;
+        }
+        public static string GenerarNumeroRecibo()
+        {
+            return Guid.NewGuid().ToString("N").Substring(0, 8).ToUpper();
+        }
+    }
+}
+
+***********************************
+Archivo: Recurrente.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\EntidadesDeNegocio\Recurrente.cs
+***********************************
+
+
+namespace LogicaDeNegocio.EntidadesDeNegocio
+{
+    public class Recurrente : Pago
+    {
+        public DateTime FechaDesde { get; set; }
+        public DateTime FechaHasta { get; set; }
+
+        public Recurrente(MetodoDePago metodoDePago, string descripcion, double monto, TipoDeGasto tipoDeGasto, Usuario usuario, DateTime fechaHasta ) : base(metodoDePago, descripcion, monto, tipoDeGasto, usuario)
+        {
+            FechaDesde = DateTime.Now;
+            FechaHasta = fechaHasta;
+        }
+
+        public Recurrente(MetodoDePago metodoDePago, string descripcion, double monto, int tipoDeGastoId, int usuarioId, DateTime fechaHasta) : base(metodoDePago, descripcion, monto, tipoDeGastoId, usuarioId)
+        {
+            FechaDesde = DateTime.Now;
+            FechaHasta = fechaHasta;
+        }
+
+        protected Recurrente()
+        {
+        }
+
+        public override double CalcularMontoTotal()
+        {
+            // Calcular la cantidad total de meses entre las fechas
+            int mesesTotales = ((FechaHasta.Year - FechaDesde.Year) * 12) +
+                               (FechaHasta.Month - FechaDesde.Month) + 1;
+
+            // Valor de cada cuota
+            double valorCuota = Monto / mesesTotales;
+
+            // Calcular cuántos meses faltan desde HOY hasta la fecha de fin
+            int mesesRestantes = ((FechaHasta.Year - DateTime.Now.Year) * 12) +
+                                 (FechaHasta.Month - DateTime.Now.Month);
+
+            // Si ya venció, el saldo es 0
+            if (mesesRestantes < 0) mesesRestantes = 0;
+
+            // Saldo pendiente
+            return mesesRestantes * valorCuota;
+        }
+    }
+}
+
+***********************************
+Archivo: Rol.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\EntidadesDeNegocio\Rol.cs
+***********************************
+
+namespace LogicaDeNegocio.EntidadesDeNegocio
+{
+    public class Rol
+    {
+        public int Id { get; set; }
+        public string Tipo { get; set; }
+        public Rol(string tipo)
+        {
+            Tipo = tipo;
+        }
+    }
+}
+
+***********************************
+Archivo: TipoDeGasto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\EntidadesDeNegocio\TipoDeGasto.cs
+***********************************
+
+
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeNegocio.InterfacesEntidades;
+
+namespace LogicaDeNegocio.EntidadesDeNegocio
+{
+    public class TipoDeGasto : IValidable
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public bool Estado { get; set; }
+
+
+        public TipoDeGasto()
+        {
+        }
+
+        public TipoDeGasto(string nombre, string descripcion, bool estado)
+        {
+            Nombre = nombre;
+            Descripcion = descripcion;
+            Estado = estado;
+            Validar();
+        }
+
+        public void Validar()
+        {
+            ValidarNombre();
+            ValidarDescripcion();
+        }
+
+        private void ValidarNombre()
+        {
+            if (string.IsNullOrEmpty(Nombre))
+            {
+                throw new TipoDeGastoException("El nombre es obligatorio");
+            }
+        }
+
+        private void ValidarDescripcion()
+        {
+            if (string.IsNullOrEmpty(Descripcion))
+            {
+                throw new TipoDeGastoException("La Descripcion es obligatoria");
+            }
+        }
+    }
+}
+
+***********************************
+Archivo: Usuario.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\EntidadesDeNegocio\Usuario.cs
+***********************************
+
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeNegocio.InterfacesEntidades;
+using LogicaDeNegocio.ValueObject;
+
+namespace LogicaDeNegocio.EntidadesDeNegocio
+{
+    public class Usuario : IValidable
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Mail { get; set; }
+        public Equipo Equipo { get; set; }
+        public int EquipoId { get; set; }
+        public Rol Rol { get; set; }
+        public int RolId { get; set; }
+        public Contrasenia Contrasenia { get; set; }
+
+        public Usuario()
+        {
+        }
+
+        public Usuario(string nombre, string apellido, string mail, string rol, string contrasenia)
+        {
+            Nombre = nombre;
+            Apellido = apellido;
+            Mail = null;
+            Rol = new Rol(rol);
+            Contrasenia = new Contrasenia (contrasenia);
+            Validar();
+        }
+
+        public Usuario(string nombre, string apellido, int equipoId, int rolId, string contrasenia)
+        {
+            Nombre = nombre;
+            Apellido = apellido;
+            Mail = null;
+            EquipoId = equipoId;
+            RolId = rolId;
+            Contrasenia = new Contrasenia(contrasenia);
+            Validar();
+        }
+
+        public void Validar()
+        {
+            ValidarNombre();
+            ValidarApellido();
+        }
+
+        private void ValidarNombre()
+        {
+            if (string.IsNullOrEmpty(Nombre))
+            {
+                throw new UsuarioException("El nombre es obligatorio");
+            }
+        }
+
+        private void ValidarApellido()
+        {
+            if (string.IsNullOrEmpty(Apellido))
+            {
+                throw new UsuarioException("El apellido es obligatorio");
+            }
+        }
+    }
+}
+
+***********************************
+Archivo: IRepositorio.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\InterfacesDeRepositorio\IRepositorio.cs
+***********************************
+
+namespace LogicaDeNegocio.InterfacesDeRepositorio
+{
+    public interface IRepositorio<T>
+    {
+        void Add(T item);
+        T GetById(int id);
+        IEnumerable<T> GetAll();
+    }
+}
+
+***********************************
+Archivo: IRepositorioAuditoria.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\InterfacesDeRepositorio\IRepositorioAuditoria.cs
+***********************************
+using LogicaDeNegocio.EntidadesDeNegocio;
+
+namespace LogicaDeNegocio.InterfacesDeRepositorio
+{
+    public interface IRepositorioAuditoria
+    {
+        void Add(Auditoria item);
+         IEnumerable<Auditoria> ListadoDeAuditoria(int id);
+    }
+}
+
+***********************************
+Archivo: IRepositorioEquipo.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\InterfacesDeRepositorio\IRepositorioEquipo.cs
+***********************************
+
+using LogicaDeNegocio.EntidadesDeNegocio;
+
+namespace LogicaDeNegocio.InterfacesDeRepositorio
+{
+    public interface IRepositorioEquipo : IRepositorio<Equipo>
+    {
+    }
+}
+
+***********************************
+Archivo: IRepositorioPago.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\InterfacesDeRepositorio\IRepositorioPago.cs
+***********************************
+
+
+using LogicaDeNegocio.EntidadesDeNegocio;
+
+namespace LogicaDeNegocio.InterfacesDeRepositorio
+{
+    public interface IRepositorioPago : IRepositorio<Pago>
+    {
+        public void Add(Pago item);
+
+        public IEnumerable<Pago> GetAll();
+
+        public Pago GetById(int id);
+
+        public IEnumerable<Pago> GetAllPagoUnico(DateTime fechaFiltro);
+        public IEnumerable<Pago> GetAllRecurrente(DateTime fechaFiltro);
+        public IEnumerable<Pago> FiltrarPagoUnico(double monto);
+        public IEnumerable<Equipo> FiltrarPagoUnicoPorMonto(double monto);
+        public IEnumerable<Pago> FiltrarPagoPorMail(string mail);
+    }
+}
+
+***********************************
+Archivo: IRepositorioRol.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\InterfacesDeRepositorio\IRepositorioRol.cs
+***********************************
+using LogicaDeNegocio.EntidadesDeNegocio;
+
+namespace LogicaDeNegocio.InterfacesDeRepositorio
+{
+    public interface IRepositorioRol: IRepositorio<Rol>
+    {
+    }
+}
+
+***********************************
+Archivo: IRepositorioTipoDeGasto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\InterfacesDeRepositorio\IRepositorioTipoDeGasto.cs
+***********************************
+
+
+using LogicaDeNegocio.EntidadesDeNegocio;
+
+namespace LogicaDeNegocio.InterfacesDeRepositorio
+{
+    public interface IRepositorioTipoDeGasto
+    {
+        void Add(TipoDeGasto item);
+        void Delete(TipoDeGasto item);
+        void Update(int id, TipoDeGasto item);
+        TipoDeGasto GetById(int id);
+        IEnumerable<TipoDeGasto> GetAll();
+    }
+}
+
+***********************************
+Archivo: IRepositorioUsuario.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\InterfacesDeRepositorio\IRepositorioUsuario.cs
+***********************************
+
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.ValueObject;
+
+namespace LogicaDeNegocio.InterfacesDeRepositorio
+{
+    public interface IRepositorioUsuario : IRepositorio<Usuario>
+    {
+        Usuario GetByEmail(string email, string contrasenia);
+        Usuario BuscarUsuarioByMail(string mail);
+        string GenerarEmail(string nombre, string apellido);
+        string LimpiarTexto(string texto);
+        void ModificarContrasenia(int id, Usuario usuario);
+    }
+}
+
+***********************************
+Archivo: IValidable.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\InterfacesEntidades\IValidable.cs
+***********************************
+
+
+namespace LogicaDeNegocio.InterfacesEntidades
+{
+    public interface IValidable
+    {
+        void Validar();
+    }
+}
+
+***********************************
+Archivo: Contrasenia.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeNegocio\ValueObject\Contrasenia.cs
+***********************************
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeNegocio.InterfacesEntidades;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace LogicaDeNegocio.ValueObject
+{
+    [ComplexType]
+    public record Contrasenia : IValidable, IEquatable<Contrasenia>
+    {
+        public string Value { get; private set; }
+
+        public Contrasenia(string value)
+        {
+            Value = value;
+            Validar();
+        }
+        public void Validar()
+        {
+            if (string.IsNullOrEmpty(Value) || Value.ToString().Length < 8)
+            {
+                throw new UsuarioException("Contraseña debe tener almenos 8 caracteres");
+            }
+        }
+    }
+}
+
+***********************************
+Archivo: AdministradorApiController.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\WebApi\Controllers\AdministradorApiController.cs
+***********************************
+using CasosDeUsos.DTOs.UsuarioDTO;
+using CasosDeUsos.InterfacesCU.AuditoriaCU;
+using CasosDeUsos.InterfacesCU.TipoDeGastoCU;
+using CasosDeUsos.InterfacesCU.UsuarioCU;
+using ExcepcionesPropias.ExcepcionesEntidades;
+using ExcepcionesPropias.ExcepcionesGenericas;
+using LogicaDeAplicacion.CasosDeUso.CUEquipo;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebApi.Controllers
+{
+    [Route("api/[Controller]")]
+    [ApiController]
+    public class AdministradorApiController : Controller
+    {
+        public ICUModificarContrasenia CUModificarContrasenia { get; set; }
+        public ICUListarUsuarios CUListarUsuarios { get; set; }
+        public ICUListarAuditoria CUListarAuditoria { get; set; }
+        public ICUListadoTipoDeGasto CUListadoTipoDeGasto { get; set; }
+
+        public AdministradorApiController (ICUModificarContrasenia cUModificarContrasenia, 
+                                            ICUListarUsuarios cUListarUsuarios, ICUListarAuditoria cUListarAuditoria,
+                                            ICUListadoTipoDeGasto cUListadoTipoDeGasto)
+        {
+            CUModificarContrasenia = cUModificarContrasenia;
+            CUListarUsuarios = cUListarUsuarios;
+            CUListarAuditoria = cUListarAuditoria;
+            CUListadoTipoDeGasto = cUListadoTipoDeGasto;
+        }
+
+
+        /// <summary>
+        /// Modifica la contraseña de un usuario administrador identificado por su ID.
+        /// </summary>
+        /// <param name="id">ID del usuario cuya contraseña se desea modificar.</param>
+        /// <param name="contraseniaDto">Objeto que contiene la nueva contraseña y su confirmación.</param>
+        /// <returns>
+        /// Devuelve:
+        /// - 200 OK si la contraseña se modificó correctamente.<br/>
+        /// - 400 BadRequest si los datos son inválidos.<br/>
+        /// - 404 NotFound si el usuario no existe.<br/>
+        /// - 409 Conflict si existe un conflicto de negocio.<br/>
+        /// - 500 InternalServerError ante un error inesperado.
+        /// </returns>
+
+        // GET: AdministradorApiController/Edit/5
+        [Authorize(Roles = "Administrador")]
+        [HttpPut("{id}")]
+        public IActionResult Put(int id,[FromBody]ContraseniaDto contraseniaDto)
+        {
+            try
+            {
+                if (id <= 0)
+                {
+                    return BadRequest("Id no es correcto");
+                }
+                if (contraseniaDto == null)
+                {
+                    return BadRequest("Datos incorrectos");
+                }
+                CUModificarContrasenia.Ejecutar(id, contraseniaDto);
+                return Ok();
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (UsuarioException ex)
+            {
+                return BadRequest (ex.Message);
+            }
+            catch(ConflictException ex)
+            {
+                return Conflict (ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound (ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+            
+        }
+
+        /// <summary>
+        /// Obtiene un listado completo de todos los usuarios registrados en el sistema.
+        /// <summary>
+        /// <returns>
+        /// Devuelve:
+        /// - 200 OK con la lista de usuarios.<br/>
+        /// - 500 InternalServerError ante un error inesperado.
+        /// </returns>
+
+        [Authorize(Roles = "Administrador")]
+        [HttpGet("ListadoDeUsuarios")]
+        public IActionResult Get()
+        {
+            try
+            {
+                return Ok(CUListarUsuarios.Ejecutar());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        [Authorize(Roles = "Administrador")]
+        [HttpGet("ListadoTipoDeGasto")]
+        public IActionResult ListadoTipoDeGasto()
+        {
+            try
+            {
+                return Ok(CUListadoTipoDeGasto.Ejecutar());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Obtiene el historial de auditoría asociado a un Tipo de gasto identificado por su ID.
+        /// <summary>
+        /// <param name="id">ID del Tipo de gasto del cual se desea obtener la auditoría.</param>
+        /// <returns>
+        /// Devuelve:
+        /// - 200 OK con el historial de auditoría.<br/>
+        /// - 400 BadRequest si el ID es inválido.<br/>
+        /// - 500 InternalServerError ante un error inesperado.
+        /// </returns>
+
+        [Authorize(Roles = "Administrador")]
+        [HttpGet("ListadoDeAuditoria/{id}")]
+        public IActionResult ObtenerAuditoria(int id)
+        {
+            try
+            {
+                if (id <= 0)
+                {
+                    return BadRequest("Datos Incorrectos");
+                }
+                return Ok(CUListarAuditoria.Ejecutar(id));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+    }
+}
+
+***********************************
+Archivo: GerenteApiController.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\WebApi\Controllers\GerenteApiController.cs
+***********************************
+using CasosDeUsos.DTOs.UsuarioDTO;
+using CasosDeUsos.InterfacesCU.EquipoCU;
+using CasosDeUsos.InterfacesCU.PagoCU;
+using ExcepcionesPropias.ExcepcionesEntidades;
+using ExcepcionesPropias.ExcepcionesGenericas;
+using LogicaDeAplicacion.CasosDeUso.CUPago;
+using LogicaDeAplicacion.CasosDeUso.CUUsuario;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebApi.Controllers
+{
+    [Route("api/[Controller]")]
+    [ApiController]
+    public class GerenteApiController : Controller
+    {
+        public ICUFiltrarPagoUnicoPorMonto CUFiltrarPagoUnicoPorMonto { get; set; }
+        public ICUListarEquipo CUListarEquipo { get; set; }
+        public GerenteApiController(ICUFiltrarPagoUnicoPorMonto cUFiltrarPagoUnicoPorMonto, ICUListarEquipo cUListarEquipo) 
+        {
+            CUFiltrarPagoUnicoPorMonto = cUFiltrarPagoUnicoPorMonto;
+            CUListarEquipo = cUListarEquipo;
+        }
+        /// <summary>
+        /// Obtiene el listado completo de equipos registrados en el sistema.
+        /// </summary>
+        /// <returns>
+        /// Devuelve:
+        /// - 200 OK con la lista de equipos.<br/>
+        /// - 500 InternalServerError si ocurre un error inesperado.
+        /// </returns>
+
+        // GET: GerenteController
+        [Authorize(Roles = "Gerente")]
+        [HttpGet("ListadoEquipos")]
+        public IActionResult Get()
+        {
+            try
+            {
+                return Ok(CUListarEquipo.Ejecutar());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        /// <summary>
+        /// Obtiene un listado de equipos únicos filtrados por un monto mínimo especificado.
+        /// </summary>
+        /// <param name="monto">Monto mínimo que deben cumplir los registros para ser incluidos en el resultado.</param>
+        /// <returns>
+        /// Devuelve:
+        /// - 200 OK con los resultados filtrados.<br/>
+        /// - 400 BadRequest si el monto es inválido o menor o igual a cero.<br/>
+        /// - 404 NotFound si no se encuentran registros que cumplan la condición.<br/>
+        /// - 409 Conflict ante un conflicto de negocio.<br/>
+        /// - 500 InternalServerError si ocurre un error inesperado.
+        /// </returns>
+
+        [Authorize(Roles = "Gerente")]
+        [HttpGet("ListadoEquiposFiltrado/{monto}")]
+        public IActionResult Get(double monto)
+        {
+            try
+            {
+                if (monto <= 0)
+                {
+                    return BadRequest("Monto no es correcto");
+                }
+                
+                return Ok(CUFiltrarPagoUnicoPorMonto.Ejecutar(monto));
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ConflictException ex)
+            {
+                return Conflict(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+        }
+
+
+
+
+    }
+    
+}
+***********************************
+Archivo: LoginApiController.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\WebApi\Controllers\LoginApiController.cs
+***********************************
+using CasosDeUsos.DTOs.UsuarioDTO;
+using CasosDeUsos.InterfacesCU.UsuarioCU;
+using ExcepcionesPropias.ExcepcionesEntidades;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using WebAPI.Autenticacion;
+namespace WebApi.Controllers
+{
+
+    [Route("api/[Controller]")]
+    [ApiController]
+
+    public class LoginApiController : ControllerBase
+    {
+        public ICULoginDeUsuario CULoginDeUsuario { get; set; }
+
+        public LoginApiController(ICULoginDeUsuario cULoginDeUsuario) {
+            CULoginDeUsuario = cULoginDeUsuario;
+        }
+        /// <summary>
+        /// Inicia sesión en el sistema validando las credenciales del usuario y genera un token JWT en caso de éxito.
+        /// </summary>
+        /// <param name="loginDto">Objeto que contiene las credenciales ingresadas por el usuario (email y contraseña).</param>
+        /// <returns>
+        /// Devuelve:
+        /// - 200 OK con los datos del usuario autenticado y su token.<br/>
+        /// - 400 BadRequest si los datos son inválidos o las credenciales son incorrectas.<br/>
+        /// - 500 InternalServerError ante un error inesperado.
+        /// </returns>
+
+        [HttpPost("Login")]
+        public IActionResult Login([FromBody] LoginDto loginDto)
+        {
+            try
+            {
+                if (loginDto == null)
+                {
+                    return BadRequest("Datos incorrectos");
+                }
+                UsuarioLogueadoDto usuarioLogueadoDto = CULoginDeUsuario.Ejecutar(loginDto);
+                if (usuarioLogueadoDto != null)
+                {
+                    usuarioLogueadoDto.Token = ManejadorToken.CrearToken(usuarioLogueadoDto);
+                }
+                return Ok(usuarioLogueadoDto);
+            }
+            catch (UsuarioException ex)
+            {
+                return BadRequest(new { mensaje = ex.Message });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { mensaje = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error interno del servidor" );
+            }
+        }
+    }
+}
+***********************************
+Archivo: UsuarioApiController.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\WebApi\Controllers\UsuarioApiController.cs
+***********************************
+using CasosDeUsos.DTOs.PagoDto;
+using CasosDeUsos.InterfacesCU.MetodoDePagoCU;
+using CasosDeUsos.InterfacesCU.PagoCU;
+using CasosDeUsos.InterfacesCU.TipoDeGastoCU;
+using ExcepcionesPropias.ExcepcionesEntidades;
+using ExcepcionesPropias.ExcepcionesGenericas;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+namespace WebApi.Controllers
+{
+    [Route("api/[Controller]")]
+    [ApiController]
+    public class UsuarioApiController : Controller
+    {
+        public ICUGetPagosUsuarioByMail CUGetPagosUsuarioById { get; set; }
+        public ICUAgregarPago CUAgregarPago { get; set; }
+        public ICUListadoTipoDeGasto CUListadoTipoDeGasto { get; set; }
+        public ICUObtenerEnum CUObtenerEnum { get; set; }
+
+
+        public UsuarioApiController(ICUGetPagosUsuarioByMail cUGetPagosUsuarioById, ICUAgregarPago cUAgregarPago,
+                ICUListadoTipoDeGasto cUListadoTipoDeGasto, ICUObtenerEnum cUObtenerEnum)
+        {
+            CUGetPagosUsuarioById = cUGetPagosUsuarioById;
+            CUAgregarPago = cUAgregarPago;
+            CUListadoTipoDeGasto = cUListadoTipoDeGasto;
+            CUObtenerEnum = cUObtenerEnum;
+        }
+        /// <summary>
+        /// Obtiene los pagos asociados al usuario autenticado mediante su correo extraído del token.
+        /// </summary>
+        /// <returns>
+        /// Devuelve:
+        /// - 200 OK con los pagos del usuario.<br/>
+        /// - 400 BadRequest si el correo no puede obtenerse o es inválido.<br/>
+        /// - 404 NotFound si no se encuentran pagos asociados.<br/>
+        /// - 500 InternalServerError si ocurre un error inesperado.
+        /// </returns>
+        [Authorize(Roles = "Empleado, Gerente")]
+        [HttpGet("FiltrarPagoPorMail")]
+        public IActionResult Get()
+        {
+            try
+            {
+                string mail = User.FindFirst(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Email)?.Value ?? User.FindFirst(ClaimTypes.Email)?.Value;
+                return Ok(CUGetPagosUsuarioById.Ejecutar(mail));
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (UsuarioException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Error");
+            }
+        }
+        /// <summary>
+        /// Obtiene el listado completo de tipos de gastos disponibles en el sistema.
+        /// </summary>
+        /// <returns>
+        /// Devuelve:
+        /// - 200 OK con la lista de tipos de gasto.<br/>
+        /// - 500 InternalServerError si ocurre un error inesperado.
+        /// </returns>
+        [HttpGet("ListaDeGastos")]
+        public IActionResult ListaDeGastos()
+        {
+            try
+            {
+                return Ok(CUListadoTipoDeGasto.Ejecutar());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        /// <summary>
+        /// Obtiene la lista de métodos de pago disponibles en el sistema mediante un enum.
+        /// </summary>
+        /// <returns>
+        /// Devuelve:
+        /// - 200 OK con los métodos de pago.<br/>
+        /// - 500 InternalServerError si ocurre un error inesperado.
+        /// </returns>
+
+        [HttpGet("MetodosDePago")]
+        public IActionResult MetodosDePago()
+        {
+            try
+            {
+                return Ok(CUObtenerEnum.Ejecutar());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        /// <summary>
+        /// Registra un nuevo pago realizado por el usuario autenticado.
+        /// </summary>
+        /// <param name="pagoDto">Objeto que contiene los datos del pago que se desea registrar.</param>
+        /// <returns>
+        /// Devuelve:
+        /// - 200 OK si el pago se registró correctamente.<br/>
+        /// - 400 BadRequest si los datos son inválidos o existe un error de negocio.<br/>
+        /// - 409 Conflict si ocurre un conflicto en la creación del pago.<br/>
+        /// - 500 InternalServerError ante un error inesperado.
+        /// </returns>
+        // POST api/<ClienteWebAPIController>
+        [Authorize(Roles = "Empleado, Gerente, Administrador")]
+        [HttpPost("AltaDePago")]
+        public IActionResult Create([FromBody] PagoDto pagoDto)
+        {
+            try
+            {
+                if (pagoDto == null)
+                {
+                    return BadRequest("Datos incorrectos");
+                }
+                string idText = User.FindFirst(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Name)?.
+                                Value ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                int.TryParse(idText, out int id);
+                pagoDto.UsuarioId = id;
+                CUAgregarPago.Ejecutar(pagoDto);
+                return Ok();
+            }
+            catch (PagoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ConflictException ex)
+            {
+                return Conflict(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Error");
+            }
+
+        }
+
+
+    }
+}
+
+***********************************
+Archivo: Token.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\WebApi\Filter\Token.cs
+***********************************
+using CasosDeUsos.DTOs.UsuarioDTO;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
+namespace WebAPI.Autenticacion
+{
+    public class ManejadorToken
+    {
+        internal static string CrearToken(UsuarioLogueadoDto dtoUsuario)
+        {
+
+            byte[] clave = Encoding.ASCII.GetBytes("ZWRpw6fDo28gZW0gY29tcHV0YWRvcmE=");
+
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+
+            //clave secreta, generalmente se incluye en el archivo de configuración
+            //Debe ser un vector de bytes         
+
+            //Se incluye un claim para el email
+            SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, dtoUsuario.Id.ToString()),
+                    new Claim(ClaimTypes.Email, dtoUsuario.Mail),
+                    new Claim(ClaimTypes.Role, dtoUsuario.Rol),
+
+
+                }),
+                Expires = DateTime.UtcNow.AddMinutes(5),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(clave),
+                SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return tokenHandler.WriteToken(token);
+        }
+    }
+}
+***********************************
+Archivo: AuditoriaDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\AuditoriaDTO\AuditoriaDto.cs
+***********************************
+using CasosDeUsos.DTOs.TipoDeGastoDTO;
+
+namespace CasosDeUsos.DTOs.AuditoriaDTO
+
+{
+    public class AuditoriaDto
+    {
+        public string Mail { get; set; }
+        public string Accion { get; set; }
+        public DateTime Fecha { get; set; }
+        public string NombreTipoDeGasto { get; set; }
+        public string DescripcionTipoDeGasto { get; set; }
+
+        public IEnumerable<TipoDeGastoListadoDto> tiposDeGasto { get; set; } = new List<TipoDeGastoListadoDto>();
+    }
+}
+
+***********************************
+Archivo: EquipoListadoDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\EquipoDTO\EquipoListadoDto.cs
+***********************************
+namespace CasosDeUsos.DTOs.EquipoDTO
+{
+    public class EquipoListadoDto
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+    }
+}
+
+***********************************
+Archivo: PagoDetalleDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\PagoDto\PagoDetalleDto.cs
+***********************************
+namespace CasosDeUsos.DTOs.PagoDto
+{
+    public class PagoDetalleDto
+    {
+        public int Id { get; set; }
+        public string TipoDePago { get; set; }
+        public string MetodoDePago { get; set; }
+        public string Descripcion { get; set; }
+        public double Monto { get; set; }
+        public string TipoDeGasto { get; set; }
+        public string UsuarioNombre { get; set; }
+        public string UsuarioApellido { get; set; }
+        public DateTime? FechaDesde { get; set; }
+        public DateTime? FechaHasta { get; set; }
+    }
+}
+
+***********************************
+Archivo: PagoDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\PagoDto\PagoDto.cs
+***********************************
+using CasosDeUsos.DTOs.TipoDeGastoDTO;
+
+namespace CasosDeUsos.DTOs.PagoDto
+{
+    public class PagoDto
+    {
+        public string TipoDePago { get; set; }
+        public string MetodoDePago { get; set; }
+        public string Descripcion { get; set; }
+        public double Monto { get; set; }
+        public int TipoDeGastoId { get; set; }
+        public int UsuarioId { get; set; }
+        public DateTime FechaHasta { get; set; }
+        public IEnumerable<TipoDeGastoListadoDto> tiposDeGasto { get; set; } = new List<TipoDeGastoListadoDto>();
+        public IEnumerable<string> MetodosDePago { get; set; } = new List<string>();
+
+    }
+}
+
+***********************************
+Archivo: PagoFiltradoDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\PagoDto\PagoFiltradoDto.cs
+***********************************
+
+
+namespace CasosDeUsos.DTOs.PagoDto
+{
+    public class PagoFiltradoDto
+    {
+        public int Id { get; set; }
+        public string MetodoDePago { get; set; }
+        public double Monto { get; set; }
+        public int UsuarioId { get; set; }
+        public string TipoDeGasto { get; set; }
+        public double SaldoAPagar { get; set; }
+    }
+}
+
+***********************************
+Archivo: PagoFiltradoMontoDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\PagoDto\PagoFiltradoMontoDto.cs
+***********************************
+namespace CasosDeUsos.DTOs.PagoDto
+{
+    public class PagoFiltradoMontoDto
+    {
+        public int Id { get; set; }
+        public double Monto { get; set; }
+        public int UsuarioId { get; set; }
+        public string NombreUsuario { get; set; }
+        public string ApellidoUsuario { get; set; }
+    }
+}
+
+***********************************
+Archivo: PagoListadoDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\PagoDto\PagoListadoDto.cs
+***********************************
+namespace CasosDeUsos.DTOs.PagoDto
+{
+    public class PagoListadoDto
+    {
+        public int Id { get; set; }
+        public string MetodoDePago { get; set; }
+        public double Monto { get; set; }
+        public int UsuarioId { get; set; }
+        public string TipoDeGasto { get; set; }
+        public double SaldoAPagar { get; set; }
+    }
+}
+
+***********************************
+Archivo: PagoListadoEquipoDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\PagoDto\PagoListadoEquipoDto.cs
+***********************************
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CasosDeUsos.DTOs.PagoDto
+{
+    public class PagoListadoEquipoDto
+    {
+        public string Equipo { get; set; }
+    }
+}
+
+***********************************
+Archivo: RolListadoDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\RolDTO\RolListadoDto.cs
+***********************************
+
+namespace CasosDeUsos.DTOs.Rol
+{
+    public class RolListadoDto
+    {
+        public int Id { get; set; }
+        public string Tipo { get; set; }
+    }
+}
+
+***********************************
+Archivo: TipoDeGastoDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\TipoDeGastoDTO\TipoDeGastoDto.cs
+***********************************
+
+
+namespace CasosDeUsos.DTOs.TipoDeGastoDTO
+{
+    public class TipoDeGastoDto
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+    }
+}
+
+***********************************
+Archivo: TipoDeGastoListadoDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\TipoDeGastoDTO\TipoDeGastoListadoDto.cs
+***********************************
+
+namespace CasosDeUsos.DTOs.TipoDeGastoDTO
+{
+    public class TipoDeGastoListadoDto
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+
+    }
+}
+
+***********************************
+Archivo: AltaUsuarioDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\UsuarioDTO\AltaUsuarioDto.cs
+***********************************
+using CasosDeUsos.DTOs.EquipoDTO;
+using CasosDeUsos.DTOs.Rol;
+namespace CasosDeUsos.DTOs.UsuarioDTO
+{
+    public class AltaUsuarioDto
+    {
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public int EquipoId { get; set; }
+        public int RolId { get; set; }
+        public string Contrasenia { get; set; }
+        public IEnumerable<EquipoListadoDto> equipos { get; set; } = new List<EquipoListadoDto>();
+        public IEnumerable<RolListadoDto> roles { get; set; } = new List<RolListadoDto>();
+    }
+}
+
+***********************************
+Archivo: ContraseniaDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\UsuarioDTO\ContraseniaDto.cs
+***********************************
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CasosDeUsos.DTOs.UsuarioDTO
+{
+    public class ContraseniaDto
+    {
+        public string Contrasenia {  get; set; }
+    }
+}
+
+***********************************
+Archivo: LoginDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\UsuarioDTO\LoginDto.cs
+***********************************
+
+
+using System.ComponentModel.DataAnnotations;
+
+namespace CasosDeUsos.DTOs.UsuarioDTO
+{
+    public class LoginDto
+    {
+        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "El correo es obligatorio")]
+        public string Email { get; set; }
+
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "La contraseña es obligatoria")]
+        public string Contrasenia { get; set; }
+    }
+}
+
+***********************************
+Archivo: UsuarioDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\UsuarioDTO\UsuarioDto.cs
+***********************************
+
+namespace CasosDeUsos.DTOs.UsuarioDTO
+{
+    public class UsuarioDto
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Email { get; set; }
+        public string Rol { get; set; }
+    }
+}
+
+***********************************
+Archivo: UsuarioListadoDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\UsuarioDTO\UsuarioListadoDto.cs
+***********************************
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CasosDeUsos.DTOs.UsuarioDTO
+{
+    public class UsuarioListadoDto
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Mail {  get; set; }
+    }
+}
+
+***********************************
+Archivo: UsuarioLogueadoDto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\DTOs\UsuarioDTO\UsuarioLogueadoDto.cs
+***********************************
+
+namespace CasosDeUsos.DTOs.UsuarioDTO
+{
+    public class UsuarioLogueadoDto
+    {
+        public int Id { get; set; }
+        public string Mail { get; set; }
+        public string Rol { get; set; }
+        public string Token { get; set; }
+    }
+}
+
+***********************************
+Archivo: ICUAgregarAuditoria.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\AuditoriaCU\ICUAgregarAuditoria.cs
+***********************************
+
+using CasosDeUsos.DTOs.AuditoriaDTO;
+
+namespace CasosDeUsos.InterfacesCU.AuditoriaCU
+{
+    public interface ICUAgregarAuditoria
+    {
+        void Ejecutar(AuditoriaDto auditoriaDto);
+    }
+}
+
+***********************************
+Archivo: ICUListarAuditoria.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\AuditoriaCU\ICUListarAuditoria.cs
+***********************************
+using CasosDeUsos.DTOs.AuditoriaDTO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CasosDeUsos.InterfacesCU.AuditoriaCU
+{
+    public interface ICUListarAuditoria
+    {
+        IEnumerable<AuditoriaDto> Ejecutar(int idAuditado);
+    }
+}
+
+***********************************
+Archivo: ICUListarEquipo.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\EquipoCU\ICUListarEquipo.cs
+***********************************
+using CasosDeUsos.DTOs.EquipoDTO;
+
+namespace CasosDeUsos.InterfacesCU.EquipoCU
+{
+    public interface ICUListarEquipo
+    {
+        IEnumerable<EquipoListadoDto> Ejecutar();
+    }
+}
+
+***********************************
+Archivo: ICUObtenerEnum.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\MetodoDePagoCU\ICUObtenerEnum.cs
+***********************************
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CasosDeUsos.InterfacesCU.MetodoDePagoCU
+{
+    public interface ICUObtenerEnum
+    {
+        string[] Ejecutar();
+    }
+}
+
+***********************************
+Archivo: ICUAgregarPago.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\PagoCU\ICUAgregarPago.cs
+***********************************
+
+using CasosDeUsos.DTOs.PagoDto;
+
+namespace CasosDeUsos.InterfacesCU.PagoCU
+{
+    public interface ICUAgregarPago
+    {
+        void Ejecutar(PagoDto pagoDto);
+    }
+}
+
+***********************************
+Archivo: ICUBuscarPago.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\PagoCU\ICUBuscarPago.cs
+***********************************
+
+using CasosDeUsos.DTOs.PagoDto;
+
+namespace CasosDeUsos.InterfacesCU.PagoCU
+{
+    public interface ICUBuscarPago
+    {
+        PagoDetalleDto Ejecutar(int id);
+    }
+}
+
+***********************************
+Archivo: ICUFiltradoPagos.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\PagoCU\ICUFiltradoPagos.cs
+***********************************
+using CasosDeUsos.DTOs.PagoDto;
+
+namespace CasosDeUsos.InterfacesCU.PagoCU
+{
+    public interface ICUFiltradoPagos
+    {
+        IEnumerable<PagoFiltradoDto> Ejecutar(DateTime fechaFiltro);
+    }
+}
+
+***********************************
+Archivo: ICUFiltrarPagoPorMonto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\PagoCU\ICUFiltrarPagoPorMonto.cs
+***********************************
+using CasosDeUsos.DTOs.EquipoDTO;
+using CasosDeUsos.DTOs.PagoDto;
+
+namespace CasosDeUsos.InterfacesCU.PagoCU
+{
+    public interface ICUFiltrarPagoPorMonto
+    {
+        IEnumerable<EquipoListadoDto> Ejecutar(double monto);
+    }
+}
+
+***********************************
+Archivo: ICUFiltrarPagoUnicoPorMonto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\PagoCU\ICUFiltrarPagoUnicoPorMonto.cs
+***********************************
+using CasosDeUsos.DTOs.EquipoDTO;
+using CasosDeUsos.DTOs.PagoDto;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CasosDeUsos.InterfacesCU.PagoCU
+{
+    public interface ICUFiltrarPagoUnicoPorMonto
+    {
+        IEnumerable<EquipoListadoDto> Ejecutar(double monto);
+    }
+}
+
+***********************************
+Archivo: ICUGetPagosUsuarioByMail.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\PagoCU\ICUGetPagosUsuarioByMail.cs
+***********************************
+using CasosDeUsos.DTOs.PagoDto;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CasosDeUsos.InterfacesCU.PagoCU
+{
+    public interface ICUGetPagosUsuarioByMail
+    {
+        IEnumerable<PagoListadoDto> Ejecutar(string mail);
+    }
+}
+
+***********************************
+Archivo: ICUListadoPago.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\PagoCU\ICUListadoPago.cs
+***********************************
+
+using CasosDeUsos.DTOs.PagoDto;
+
+namespace CasosDeUsos.InterfacesCU.PagoCU
+{
+    public interface ICUListadoPago
+    {
+        IEnumerable<PagoListadoDto> Ejecutar();
+    }
+}
+
+***********************************
+Archivo: ICUListarRol.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\RolCU\ICUListarRol.cs
+***********************************
+using CasosDeUsos.DTOs.Rol;
+namespace CasosDeUsos.InterfacesCU.RolCU
+{
+    public interface ICUListarRol
+    {
+        IEnumerable<RolListadoDto> Ejecutar();
+    }
+}
+
+***********************************
+Archivo: ICUAddTipoDeGasto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\TipoDeGastoCU\ICUAddTipoDeGasto.cs
+***********************************
+using CasosDeUsos.DTOs.TipoDeGastoDTO;
+
+namespace CasosDeUsos.InterfacesCU.TipoDeGastoCU
+{
+    public interface ICUAddTipoDeGasto
+    {
+        void Ejecutar(TipoDeGastoDto tipoDeGastoDto);
+    }
+}
+
+***********************************
+Archivo: ICUBuscarTipoDeGasto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\TipoDeGastoCU\ICUBuscarTipoDeGasto.cs
+***********************************
+using CasosDeUsos.DTOs.TipoDeGastoDTO;
+
+
+namespace CasosDeUsos.InterfacesCU.TipoDeGastoCU
+{
+    public interface ICUBuscarTipoDeGasto
+    {
+        TipoDeGastoListadoDto Ejecutar(int id);
+    }
+}
+
+***********************************
+Archivo: ICUEliminarTipoDeGasto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\TipoDeGastoCU\ICUEliminarTipoDeGasto.cs
+***********************************
+namespace CasosDeUsos.InterfacesCU.TipoDeGastoCU
+{
+    public interface ICUEliminarTipoDeGasto
+    {
+        void Ejecutar(int id);
+    }
+}
+
+***********************************
+Archivo: ICUListadoTipoDeGasto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\TipoDeGastoCU\ICUListadoTipoDeGasto.cs
+***********************************
+using CasosDeUsos.DTOs.TipoDeGastoDTO;
+
+
+namespace CasosDeUsos.InterfacesCU.TipoDeGastoCU
+{
+    public interface ICUListadoTipoDeGasto
+    {
+        IEnumerable<TipoDeGastoListadoDto> Ejecutar();
+    }
+}
+
+***********************************
+Archivo: ICUModificarTipoDeGasto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\TipoDeGastoCU\ICUModificarTipoDeGasto.cs
+***********************************
+using CasosDeUsos.DTOs.TipoDeGastoDTO;
+
+namespace CasosDeUsos.InterfacesCU.TipoDeGastoCU
+{
+    public interface ICUModificarTipoDeGasto
+    {
+        void Ejecutar(int id, TipoDeGastoListadoDto tipoDeGastoListadoDto);
+    }
+}
+
+***********************************
+Archivo: ICUAgregarUsuario.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\UsuarioCU\ICUAgregarUsuario.cs
+***********************************
+using CasosDeUsos.DTOs.UsuarioDTO;
+
+
+namespace CasosDeUsos.InterfacesCU.UsuarioCU
+{
+    public interface ICUAgregarUsuario
+    {
+        void Ejecutar(AltaUsuarioDto altaUsuarioDto);
+    }
+}
+
+
+***********************************
+Archivo: ICUBuscarUsuarioByMail.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\UsuarioCU\ICUBuscarUsuarioByMail.cs
+***********************************
+using CasosDeUsos.DTOs.UsuarioDTO;
+
+namespace CasosDeUsos.InterfacesCU.UsuarioCU
+{
+    public interface ICUBuscarUsuarioByMail
+    {
+       UsuarioDto Ejecutar(string mail);
+    }
+}
+
+***********************************
+Archivo: ICUListarUsuarios.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\UsuarioCU\ICUListarUsuarios.cs
+***********************************
+using CasosDeUsos.DTOs.UsuarioDTO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CasosDeUsos.InterfacesCU.UsuarioCU
+{
+    public interface ICUListarUsuarios
+    {
+        IEnumerable<UsuarioListadoDto> Ejecutar(); 
+    }
+}
+
+***********************************
+Archivo: ICULoginDeUsuario.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\UsuarioCU\ICULoginDeUsuario.cs
+***********************************
+using CasosDeUsos.DTOs.UsuarioDTO;
+
+
+namespace CasosDeUsos.InterfacesCU.UsuarioCU
+{
+    public interface ICULoginDeUsuario
+    {
+        UsuarioLogueadoDto Ejecutar(LoginDto loginDto);
+    }
+}
+
+***********************************
+Archivo: ICUModificarContrasenia.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\CasosDeUsos\InterfacesCU\UsuarioCU\ICUModificarContrasenia.cs
+***********************************
+using CasosDeUsos.DTOs.UsuarioDTO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CasosDeUsos.InterfacesCU.UsuarioCU
+{
+    public interface ICUModificarContrasenia
+    {
+        void Ejecutar(int id, ContraseniaDto contraseniaDto);
+    }
+}
+
+***********************************
+Archivo: CUAgregarAuditoria.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUAuditoria\CUAgregarAuditoria.cs
+***********************************
+using CasosDeUsos.DTOs.AuditoriaDTO;
+using CasosDeUsos.InterfacesCU.AuditoriaCU;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+namespace LogicaDeAplicacion.CasosDeUso.CUAuditoria
+{
+    public class CUAgregarAuditoria : ICUAgregarAuditoria
+    {
+        public IRepositorioAuditoria RepoAuditoria { get; set; }
+
+        public CUAgregarAuditoria(IRepositorioAuditoria repoAuditoria)
+        {
+            RepoAuditoria = repoAuditoria;
+        }
+        public void Ejecutar(AuditoriaDto auditoriaDto)
+        {
+            Auditoria auditoria = AuditoriaMapper.AuditoriaDtoToAuditoria(auditoriaDto);
+            RepoAuditoria.Add(auditoria);
+        }
+    }
+}
+
+***********************************
+Archivo: CUListarAuditoria.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUAuditoria\CUListarAuditoria.cs
+***********************************
+
+using CasosDeUsos.DTOs.AuditoriaDTO;
+using CasosDeUsos.DTOs.PagoDto;
+using CasosDeUsos.InterfacesCU.AuditoriaCU;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUAuditoria
+{
+    public class CUListarAuditoria : ICUListarAuditoria
+    {
+        public IRepositorioAuditoria RepoAuditoria { get; set; }
+        public IRepositorioTipoDeGasto RepoTipoDeGasto { get; set; }
+
+        public CUListarAuditoria(IRepositorioAuditoria repoAuditoria, IRepositorioTipoDeGasto repoTipoDeGasto)
+        {
+            RepoAuditoria = repoAuditoria;
+            RepoTipoDeGasto = repoTipoDeGasto;
+        }
+        public IEnumerable<AuditoriaDto> Ejecutar(int idAuditado)
+        {
+            IEnumerable<Auditoria> auditoria = RepoAuditoria.ListadoDeAuditoria(idAuditado);
+            return AuditoriaMapper.AuditoriaToAuditoriaDto(auditoria);
+
+        }
+    }
+}
+
+***********************************
+Archivo: CUListarEquipo.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUEquipo\CUListarEquipo.cs
+***********************************
+using CasosDeUsos.DTOs.EquipoDTO;
+using CasosDeUsos.InterfacesCU.EquipoCU;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUEquipo
+{
+    public class CUListarEquipo : ICUListarEquipo
+    {
+        public IRepositorioEquipo RepoEquipo { get; set; }
+
+        public CUListarEquipo(IRepositorioEquipo repoEquipo)
+        {
+            RepoEquipo = repoEquipo;
+        }
+        public IEnumerable<EquipoListadoDto> Ejecutar()
+        {
+            IEnumerable<Equipo> equipos = RepoEquipo.GetAll();
+            return EquipoMapper.EquipoListadoToEquipoListadoDto(equipos);
+        }
+    }
+}
+
+***********************************
+Archivo: CULoginDeUsuario.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CULogin\CULoginDeUsuario.cs
+***********************************
+using CasosDeUsos.DTOs.UsuarioDTO;
+using CasosDeUsos.InterfacesCU.UsuarioCU;
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAplicacion.CasosDeUso.CULogin
+{
+    public class CULoginDeUsuario : ICULoginDeUsuario
+    {
+        public IRepositorioUsuario RepoUsuario { get; set; }
+
+        public CULoginDeUsuario(IRepositorioUsuario repoUsuario)
+        {
+            RepoUsuario = repoUsuario;
+        }
+        public UsuarioLogueadoDto Ejecutar(LoginDto loginDto)
+        {
+            Usuario usuario = RepoUsuario.GetByEmail(loginDto.Email, loginDto.Contrasenia);
+            if (usuario == null)
+            {
+                throw new UsuarioException("Mail o contraseña incorrectos");
+            }
+            return UsuarioMapper.UsuarioToUsuarioLogueadoDto(usuario);
+        }
+    }
+}
+
+***********************************
+Archivo: CUObtenerMetodosDePago.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUMetodoDePago\CUObtenerMetodosDePago.cs
+***********************************
+using CasosDeUsos.InterfacesCU.MetodoDePagoCU;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUMetodoDePago
+{
+    public class CUObtenerMetodosDePago : ICUObtenerEnum
+    {
+        public string[] Ejecutar()
+        {
+            return Enum.GetNames(typeof(MetodoDePago));
+        }
+
+    }
+}
+
+***********************************
+Archivo: CUAgregarPago.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUPago\CUAgregarPago.cs
+***********************************
+
+
+using CasosDeUsos.DTOs.AuditoriaDTO;
+using CasosDeUsos.DTOs.PagoDto;
+using CasosDeUsos.InterfacesCU.PagoCU;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUPago
+{
+    public class CUAgregarPago: ICUAgregarPago
+    {
+        public IRepositorioPago RepoPago { get; set; }
+
+        public CUAgregarPago(IRepositorioPago repoPago)
+        {
+            RepoPago = repoPago;
+        }
+        public void Ejecutar(PagoDto pagoDto)
+        {
+                Pago pago = PagoMapper.PagoDtoToPago(pagoDto);
+                RepoPago.Add(pago);
+        }
+        
+    }
+}
+
+***********************************
+Archivo: CUBuscarPago.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUPago\CUBuscarPago.cs
+***********************************
+using CasosDeUsos.DTOs.PagoDto;
+using CasosDeUsos.InterfacesCU.PagoCU;
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUPago
+{
+    public class CUBuscarPago : ICUBuscarPago
+    {
+        IRepositorioPago RepoPago { get; set; }
+
+        public CUBuscarPago(IRepositorioPago repoPago)
+        {
+            RepoPago = repoPago;
+        }
+
+        public PagoDetalleDto Ejecutar(int id)
+        {
+            Pago pago = RepoPago.GetById(id);
+            if (pago != null)
+            {
+                return PagoMapper.PagoToPagoDetalleDto(pago);
+            }
+            else
+            {
+                throw new PagoException("Pago no encontrado");
+            }
+
+        }
+    }
+}
+
+***********************************
+Archivo: CUFiltradoPagos.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUPago\CUFiltradoPagos.cs
+***********************************
+using CasosDeUsos.DTOs.PagoDto;
+using CasosDeUsos.InterfacesCU.PagoCU;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUPago
+{
+    public class CUFiltradoPagos : ICUFiltradoPagos
+    {
+        public IRepositorioPago RepoPago { get; set; }
+        public CUFiltradoPagos(IRepositorioPago repoPago)
+        {
+            RepoPago = repoPago;
+        }
+        public IEnumerable<PagoFiltradoDto> Ejecutar(DateTime fechaFiltro)
+        {
+            IEnumerable<Pago> pagosUnicos = RepoPago.GetAllPagoUnico(fechaFiltro);
+            IEnumerable<Pago> pagosRecurrentes = RepoPago.GetAllRecurrente(fechaFiltro);
+
+            return PagoMapper.PagoFiltradoToPagoFiltradoDto(pagosUnicos, pagosRecurrentes);
+        }
+
+    }
+}
+
+***********************************
+Archivo: CUFiltrarPagoPorMonto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUPago\CUFiltrarPagoPorMonto.cs
+***********************************
+using CasosDeUsos.DTOs.EquipoDTO;
+using CasosDeUsos.DTOs.PagoDto;
+using CasosDeUsos.InterfacesCU.PagoCU;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+
+namespace LogicaDeAplicacion.CasosDeUso.CUPago
+{
+    public class CUFiltrarPagoPorMonto : ICUFiltrarPagoPorMonto
+    {
+        public IRepositorioPago RepoPago { get; set; }
+        public CUFiltrarPagoPorMonto(IRepositorioPago repoPago)
+        {
+            RepoPago = repoPago;
+        }
+        public IEnumerable<EquipoListadoDto> Ejecutar(double monto)
+        {
+            IEnumerable<Equipo> pagosUnicos = RepoPago.FiltrarPagoUnicoPorMonto(monto);
+
+
+            return PagoMapper.PagoFiltradoMontoToPagoListadoEquipoDto(pagosUnicos);
+        }
+    }
+}
+
+***********************************
+Archivo: CUFiltrarPagoUnicoPorMonto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUPago\CUFiltrarPagoUnicoPorMonto.cs
+***********************************
+using CasosDeUsos.DTOs.EquipoDTO;
+using CasosDeUsos.InterfacesCU.PagoCU;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+
+namespace LogicaDeAplicacion.CasosDeUso.CUPago
+{
+    public class CUFiltrarPagoUnicoPorMonto : ICUFiltrarPagoUnicoPorMonto
+    {
+        public IRepositorioPago RepoPago { get; set; }
+        public CUFiltrarPagoUnicoPorMonto(IRepositorioPago repoPago)
+        {
+            RepoPago = repoPago;
+        }
+        public IEnumerable<EquipoListadoDto> Ejecutar(double monto)
+        {
+            IEnumerable<Equipo> equipo = RepoPago.FiltrarPagoUnicoPorMonto(monto);
+            return PagoMapper.PagoFiltradoMontoToPagoListadoEquipoDto(equipo);
+        }
+    }
+}
+
+***********************************
+Archivo: CUGetPagosUsuarioByMail.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUPago\CUGetPagosUsuarioByMail.cs
+***********************************
+using CasosDeUsos.DTOs.PagoDto;
+using CasosDeUsos.InterfacesCU.PagoCU;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUPago
+{
+    public class CUGetPagosUsuarioByMail : ICUGetPagosUsuarioByMail
+    {
+        public IRepositorioPago RepoPago {  get; set; }
+        public CUGetPagosUsuarioByMail(IRepositorioPago repoPago)
+        {
+            RepoPago = repoPago;
+        }
+        public IEnumerable<PagoListadoDto> Ejecutar(string mail)
+        {
+            IEnumerable<Pago> pagos = RepoPago.FiltrarPagoPorMail(mail);
+            return PagoMapper.PagoListadoToPagoListadoDto(pagos);
+        }
+    }
+}
+
+***********************************
+Archivo: CUListadoPago.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUPago\CUListadoPago.cs
+***********************************
+using CasosDeUsos.DTOs.PagoDto;
+using CasosDeUsos.InterfacesCU.PagoCU;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUPago
+{
+    public class CUListadoPago : ICUListadoPago
+    {
+        public IRepositorioPago RepoPago { get; set; }
+        public CUListadoPago (IRepositorioPago repoPago)
+        {
+            RepoPago = repoPago;
+        }
+        public IEnumerable<PagoListadoDto> Ejecutar()
+        {
+            IEnumerable<Pago> pagos = RepoPago.GetAll();
+            return PagoMapper.PagoListadoToPagoListadoDto(pagos);
+        }
+    }
+}
+
+***********************************
+Archivo: CUListarRol.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CURol\CUListarRol.cs
+***********************************
+
+using CasosDeUsos.DTOs.EquipoDTO;
+using CasosDeUsos.DTOs.Rol;
+using CasosDeUsos.InterfacesCU.RolCU;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAplicacion.CasosDeUso.CURol
+{
+    public class CUListarRol : ICUListarRol
+    {
+        public IRepositorioRol RepoRoles { get; set; }
+
+        public CUListarRol(IRepositorioRol repoRoles)
+        {
+            RepoRoles = repoRoles;
+        }
+        public IEnumerable<RolListadoDto> Ejecutar()
+        {
+            IEnumerable<Rol> roles = RepoRoles.GetAll();
+            return RolMapper.RolListadoToRolListadoDto(roles);
+        }
+
+    }
+}
+
+***********************************
+Archivo: CUBuscarTipoDeGasto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUTiposDeGasto\CUBuscarTipoDeGasto.cs
+***********************************
+using CasosDeUsos.DTOs.TipoDeGastoDTO;
+using CasosDeUsos.InterfacesCU.TipoDeGastoCU;
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUTiposDeGasto
+{
+    public class CUBuscarTipoDeGasto : ICUBuscarTipoDeGasto
+    {
+        IRepositorioTipoDeGasto RepoTipoDeGasto { get; set; }
+
+        public CUBuscarTipoDeGasto(IRepositorioTipoDeGasto repoTipoDeGasto)
+        {
+            RepoTipoDeGasto = repoTipoDeGasto;
+        }
+
+        public TipoDeGastoListadoDto Ejecutar(int id)
+        {
+            TipoDeGasto tipoDeGasto = RepoTipoDeGasto.GetById(id);
+            if (tipoDeGasto != null)
+            {
+                return TipoDeGastoMapper.TipoDeGastoToTipoDeGastoListadoDto(tipoDeGasto);
+            }
+            else
+            {
+                throw new TipoDeGastoException("Tipo de Gasto no encontrado");
+            }
+
+        }
+    }
+}
+
+***********************************
+Archivo: CUEliminarTipoDeGasto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUTiposDeGasto\CUEliminarTipoDeGasto.cs
+***********************************
+using CasosDeUsos.InterfacesCU.TipoDeGastoCU;
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUTiposDeGasto
+{
+    public class CUEliminarTipoDeGasto : ICUEliminarTipoDeGasto
+    {
+        public IRepositorioTipoDeGasto RepoTipoDeGasto { get; set; }
+
+        public CUEliminarTipoDeGasto(IRepositorioTipoDeGasto repoTipoDeGasto)
+        {
+            RepoTipoDeGasto = repoTipoDeGasto;
+        }
+
+        public void Ejecutar(int id)
+        {
+            TipoDeGasto tipoDeGasto = RepoTipoDeGasto.GetById(id);
+            if (tipoDeGasto != null)
+            {
+                RepoTipoDeGasto.Delete(tipoDeGasto);
+            }
+            else
+            {
+                throw new TipoDeGastoException("El tipo de gasto no existe");
+            }
+        }
+    }
+}
+
+***********************************
+Archivo: CUListadoTipoDeGasto.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUTiposDeGasto\CUListadoTipoDeGasto.cs
+***********************************
+using CasosDeUsos.DTOs.TipoDeGastoDTO;
+using CasosDeUsos.InterfacesCU.TipoDeGastoCU;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUTiposDeGasto
+{
+    public class CUListadoTipoDeGasto : ICUListadoTipoDeGasto
+    {
+        public IRepositorioTipoDeGasto RepoTipoDeGasto { get; set; }
+
+        public CUListadoTipoDeGasto(IRepositorioTipoDeGasto repoTipoDeGasto)
+        {
+            RepoTipoDeGasto = repoTipoDeGasto;
+        }
+        public IEnumerable<TipoDeGastoListadoDto> Ejecutar()
+        {
+            IEnumerable<TipoDeGasto> tipoDeGastos = RepoTipoDeGasto.GetAll();
+            return TipoDeGastoMapper.TipoDeGastoListadoToTipoDeGastoListadoDto(tipoDeGastos);
+        }
+   
+    }
+}
+
+***********************************
+Archivo: CUAgregarUsuario.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUUsuario\CUAgregarUsuario.cs
+***********************************
+using CasosDeUsos.DTOs.PagoDto;
+using CasosDeUsos.DTOs.UsuarioDTO;
+using CasosDeUsos.InterfacesCU.UsuarioCU;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUUsuario
+{
+    public class CUAgregarUsuario : ICUAgregarUsuario
+    {
+        public IRepositorioUsuario RepoUsuario { get; set; }
+
+        public CUAgregarUsuario(IRepositorioUsuario repoUsuario)
+        {
+            RepoUsuario = repoUsuario;
+        }
+        public void Ejecutar(AltaUsuarioDto altaUsuarioDto)
+        {
+            Usuario usuario = UsuarioMapper.AltaUsuarioDtoToUsuario(altaUsuarioDto);
+            RepoUsuario.Add(usuario);
+        }
+    }
+}
+
+***********************************
+Archivo: CUBuscarUsuarioByMail.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUUsuario\CUBuscarUsuarioByMail.cs
+***********************************
+using CasosDeUsos.DTOs.PagoDto;
+using CasosDeUsos.DTOs.UsuarioDTO;
+using CasosDeUsos.InterfacesCU.UsuarioCU;
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+
+
+namespace LogicaDeAplicacion.CasosDeUso.CUUsuario
+{
+    public class CUBuscarUsuarioByMail //: ICUBuscarUsuarioByMail
+    {
+        public IRepositorioUsuario RepoUsuario { get; set; }
+
+         public CUBuscarUsuarioByMail(IRepositorioUsuario repoUsuario)
+         {
+             RepoUsuario = repoUsuario;
+         }
+         /*public UsuarioDto Ejecutar(string mail)
+         {
+            Usuario usuario = RepoUsuario.BuscarUsuarioByMail(mail);
+            
+             if (usuario != null)
+             {
+                 return UsuarioMapper.UsuarioToUsuarioLogueadoDto(usuario);
+             }
+             else
+             {
+                 throw new UsuarioException("Mail incorrecto");
+             }
+         }*/
+    }
+}
+
+***********************************
+Archivo: CUListarUsuarios.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUUsuario\CUListarUsuarios.cs
+***********************************
+using CasosDeUsos.DTOs.UsuarioDTO;
+using CasosDeUsos.InterfacesCU.UsuarioCU;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUUsuario
+{
+    public class CUListarUsuarios : ICUListarUsuarios
+    {
+        public IRepositorioUsuario RepoUsuario { get; set; }
+        public CUListarUsuarios (IRepositorioUsuario repoUsuario)
+        {
+            RepoUsuario = repoUsuario;
+        }
+        public IEnumerable<UsuarioListadoDto> Ejecutar()
+        {
+            IEnumerable<Usuario> usuarios = RepoUsuario.GetAll();
+            return UsuarioMapper.UsuarioListadoToUsuarioListadoDto(usuarios);
+
+        }
+    }
+}
+
+***********************************
+Archivo: CUModificarContrasenia.cs
+Carpeta: C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\LogicaDeAplicacion\CasosDeUso\CUUsuario\CUModificarContrasenia.cs
+***********************************
+using CasosDeUsos.DTOs.UsuarioDTO;
+using CasosDeUsos.InterfacesCU.UsuarioCU;
+using ExcepcionesPropias.ExcepcionesEntidades;
+using LogicaDeAplicacion.Mappers;
+using LogicaDeNegocio.EntidadesDeNegocio;
+using LogicaDeNegocio.InterfacesDeRepositorio;
+using LogicaDeNegocio.ValueObject;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LogicaDeAplicacion.CasosDeUso.CUUsuario
+{
+    public class CUModificarContrasenia : ICUModificarContrasenia
+    {
+        public IRepositorioUsuario RepoUsuario { get; set; }
+
+        public CUModificarContrasenia(IRepositorioUsuario repositorioUsuario)
+        {
+            RepoUsuario = repositorioUsuario;
+        }
+
+        public void Ejecutar(int id, ContraseniaDto contraseniaDto)
+        {
+            Usuario usuario=RepoUsuario.GetById(id);
+            if (usuario == null)
+            {
+                throw new UsuarioException("Usuario no encontrado");
+            }
+            usuario.Contrasenia = new Contrasenia(contraseniaDto.Contrasenia);
+            RepoUsuario.ModificarContrasenia(id, usuario);
+        }
+    }
+}

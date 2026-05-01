@@ -1,0 +1,73 @@
+﻿@using MVC.Models.DTOs.TipoDeGastoDTO
+@model IEnumerable<MVC.Models.DTOs.AuditoriaDto.AuditoriaDto>
+@using Microsoft.AspNetCore.Http
+
+@{
+    ViewData["Title"] = "ListaDeAuditoria";
+}
+
+<h1>Lista De Auditoria</h1>
+
+<form method="post" asp-controller="Administrador" asp-action="ListaDeAuditoria">
+    <div class="input-group mb-3">
+        <span class="input-group-text">Seleccione Tipo de gasto</span>
+        <select name="TipoDeGastoId" class="form-select shadow-sm rounded">
+            @foreach (var tipo in ViewBag.TiposDeGasto)
+            {
+                <option value="@tipo.Id">@tipo.Nombre</option>
+            }
+        </select>
+
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-search"></i> Buscar
+        </button>
+    </div>
+</form>
+<p>
+    <a asp-action="ListadoDeUsuarios" asp-controller="Administrador">Volver</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Accion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreTipoDeGasto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionTipoDeGasto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreTipoDeGasto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionTipoDeGasto)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

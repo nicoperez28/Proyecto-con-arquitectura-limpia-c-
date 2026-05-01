@@ -1,0 +1,147 @@
+[
+  {
+    "ContainingType": "WebApi.Controllers.AdministradorApiController",
+    "Method": "Put",
+    "RelativePath": "api/AdministradorApi/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "contraseniaDto",
+        "Type": "CasosDeUsos.DTOs.UsuarioDTO.ContraseniaDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AdministradorApiController",
+    "Method": "ObtenerAuditoria",
+    "RelativePath": "api/AdministradorApi/ListadoDeAuditoria/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AdministradorApiController",
+    "Method": "Get",
+    "RelativePath": "api/AdministradorApi/ListadoDeUsuarios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AdministradorApiController",
+    "Method": "ListadoTipoDeGasto",
+    "RelativePath": "api/AdministradorApi/ListadoTipoDeGasto",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.GerenteApiController",
+    "Method": "Get",
+    "RelativePath": "api/GerenteApi/ListadoEquipos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.GerenteApiController",
+    "Method": "Get",
+    "RelativePath": "api/GerenteApi/ListadoEquiposFiltrado/{monto}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "monto",
+        "Type": "System.Double",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.LoginApiController",
+    "Method": "Login",
+    "RelativePath": "api/LoginApi/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "CasosDeUsos.DTOs.UsuarioDTO.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.UsuarioApiController",
+    "Method": "Create",
+    "RelativePath": "api/UsuarioApi/AltaDePago",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagoDto",
+        "Type": "CasosDeUsos.DTOs.PagoDto.PagoDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.UsuarioApiController",
+    "Method": "Get",
+    "RelativePath": "api/UsuarioApi/FiltrarPagoPorMail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.UsuarioApiController",
+    "Method": "ListaDeGastos",
+    "RelativePath": "api/UsuarioApi/ListaDeGastos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.UsuarioApiController",
+    "Method": "MetodosDePago",
+    "RelativePath": "api/UsuarioApi/MetodosDePago",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

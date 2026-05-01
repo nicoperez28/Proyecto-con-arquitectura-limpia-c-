@@ -1,0 +1,76 @@
+﻿@model MVC.Models.DTOs.UsuarioDTO.LoginDto
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+@if (TempData["Mensaje"] != null && TempData["Tipo"]?.ToString() == "error")
+{
+    <div id="alertaError" class="alert alert-danger alert-dismissible fade show shadow-sm d-flex align-items-center mt-3"
+         role="alert" style="animation: fadeIn 0.4s ease;">
+        <i class="bi bi-x-circle-fill me-2 fs-5"></i>
+        <div>
+            <strong>@TempData["Mensaje"]</strong>
+        </div>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <style>
+        @@keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+    <script>
+        // Hace que la alerta desaparezca automáticamente después de 4 segundos
+        setTimeout(() => {
+            const alerta = document.getElementById("alertaError");
+            if (alerta) {
+                const bsAlert = new bootstrap.Alert(alerta);
+                bsAlert.close();
+            }
+        }, 4000);
+    </script>
+}
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" value="nicper@laEmpresa.com"/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contrasenia" class="control-label">Contraseña</label>
+                <input asp-for="Contrasenia" class="form-control" value="12345678"/>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<p>
+
+@if (ViewBag.msg != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.msg
+    </div>
+}
+</p>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

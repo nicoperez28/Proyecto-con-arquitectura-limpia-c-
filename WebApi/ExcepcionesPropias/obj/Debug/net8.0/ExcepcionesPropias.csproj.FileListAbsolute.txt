@@ -1,0 +1,12 @@
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\bin\Debug\net8.0\ExcepcionesPropias.deps.json
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\bin\Debug\net8.0\ExcepcionesPropias.dll
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\bin\Debug\net8.0\ExcepcionesPropias.pdb
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\obj\Debug\net8.0\ExcepcionesPropias.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\obj\Debug\net8.0\ExcepcionesPropias.AssemblyInfoInputs.cache
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\obj\Debug\net8.0\ExcepcionesPropias.AssemblyInfo.cs
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\obj\Debug\net8.0\ExcepcionesPropias.csproj.CoreCompileInputs.cache
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\obj\Debug\net8.0\ExcepcionesPropias.sourcelink.json
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\obj\Debug\net8.0\ExcepcionesPropias.dll
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\obj\Debug\net8.0\refint\ExcepcionesPropias.dll
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\obj\Debug\net8.0\ExcepcionesPropias.pdb
+C:\Users\nicop\Desktop\ObligatorioP3-310175-307951\Solucion Completa\WebApi\ExcepcionesPropias\obj\Debug\net8.0\ref\ExcepcionesPropias.dll
